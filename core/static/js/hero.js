@@ -56,7 +56,7 @@
     }
 
 /* Starts the hero animation after the page and loading screen finish */
-    window.addEventListener("load", () => {
+    document.addEventListener("DOMContentLoaded", () => {
         setTimeout(() => {
             typeName();
         }, 1700);
