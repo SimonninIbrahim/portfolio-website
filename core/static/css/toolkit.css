@@ -1,0 +1,229 @@
+/* ===============================
+   TOOLKIT SECTION BACKGROUND
+   Creates the dark technical section atmosphere with orange glow
+   and controls the stacked depth order of the Toolkit section.
+================================ */
+.toolkit-layer{
+    z-index:5;
+    background:
+        radial-gradient(circle at 20% 0%, rgba(228, 79, 15, 0.392), transparent 40%),
+        linear-gradient(135deg,#18181B 0%,#0E0E10 100%);
+}
+
+/* ===============================
+   TOOLKIT CATEGORY TITLES
+   Styles each toolkit group title, including uppercase typography,
+   orange hashtag prefix, and fade-in reveal animation.
+================================ */
+.toolkit-category{
+    margin-top:55px;
+}
+
+.toolkit-category h3{
+    font-family:'Plus Jakarta Sans', sans-serif;
+    font-size:20px;
+    font-weight:600;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+
+    opacity:0;
+    transform:translateY(18px);
+    transition:0.6s ease;
+
+    color:#F5F5F7;
+
+    margin-bottom:24px;
+}
+
+.toolkit-category.visible h3{
+    opacity:1;
+    transform:translateY(0);
+}
+
+.toolkit-category h3::before{
+    content:"# ";
+    color:#FF6A2B;
+    font-weight:700;
+}
+
+/* ===============================
+   TOOLKIT ICON GRID
+   Creates the tool logo grid and controls how many items appear
+   per row on desktop.
+================================ */
+.tool-grid{
+    display:grid;
+    grid-template-columns:repeat(8,1fr);
+    gap:18px;
+}
+
+/* ===============================
+   TOOLKIT CARD ENTRANCE STATE
+   Each tool starts hidden, slightly lowered, rotated, and scaled
+   before animating into place when the category becomes visible.
+================================ */
+.tool-card{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    position:relative;
+    gap:12px;
+
+    opacity:0;
+    transform:translateY(35px) rotateX(55deg) scale(0.85);
+    transform-origin:center;
+    transition:
+        opacity 0.65s ease,
+        transform 0.65s ease;
+}
+
+/* ===============================
+   TOOL ICON BOX
+   Styles the square logo image area, including padding, sizing,
+   transparent glass base, and hover-ready transition.
+================================ */
+.tool-card img{
+    width:100%;
+    aspect-ratio:1/1;
+    object-fit:contain;
+
+    padding:12px;
+    border-radius:22px;
+
+    background:rgba(255, 255, 255, 0);
+    border:1px solid rgba(255, 255, 255, 0);
+
+    backdrop-filter:blur(12px);
+    transition:0.3s;
+}
+
+/* hover affects only the square */
+.tool-card:hover img{
+    transform:translateY(-6px);
+    border-color:rgba(255, 98, 0, 0.786);
+    background:rgba(255, 201, 150, 0.364);
+    box-shadow:0 18px 40px rgba(0,0,0,0.35);
+}
+
+/* text outside the square */
+.tool-card span{
+    font-family:'Plus Jakarta Sans', sans-serif;
+    font-size:13px;
+    color:#B8B8BE;
+    text-align:center;
+}
+
+/* ===============================
+   TOOLKIT CARD REVEAL
+   Final visible state for each tool card after JavaScript adds
+   the .visible class to the parent category.
+================================ */
+.toolkit-category.visible .tool-card{
+    opacity:1;
+    transform:translateY(0) rotateX(0deg) scale(1);
+}
+
+/* ===============================
+   STAGGERED TOOL ICON TIMING
+   Adds sequential delays so toolkit icons appear one after another
+   instead of all at the same time.
+================================ */
+.toolkit-category.visible .tool-card:nth-child(1){ transition-delay:0.05s; }
+.toolkit-category.visible .tool-card:nth-child(2){ transition-delay:0.10s; }
+.toolkit-category.visible .tool-card:nth-child(3){ transition-delay:0.15s; }
+.toolkit-category.visible .tool-card:nth-child(4){ transition-delay:0.20s; }
+.toolkit-category.visible .tool-card:nth-child(5){ transition-delay:0.25s; }
+.toolkit-category.visible .tool-card:nth-child(6){ transition-delay:0.30s; }
+.toolkit-category.visible .tool-card:nth-child(7){ transition-delay:0.35s; }
+.toolkit-category.visible .tool-card:nth-child(8){ transition-delay:0.40s; }
+.toolkit-category.visible .tool-card:nth-child(9){ transition-delay:0.45s; }
+.toolkit-category.visible .tool-card:nth-child(10){ transition-delay:0.50s; }
+.toolkit-category.visible .tool-card:nth-child(11){ transition-delay:0.55s; }
+.toolkit-category.visible .tool-card:nth-child(12){ transition-delay:0.60s; }
+.toolkit-category.visible .tool-card:nth-child(13){ transition-delay:0.65s; }
+.toolkit-category.visible .tool-card:nth-child(14){ transition-delay:0.70s; }
+.toolkit-category.visible .tool-card:nth-child(15){ transition-delay:0.75s; }
+.toolkit-category.visible .tool-card:nth-child(16){ transition-delay:0.80s; }
+.toolkit-category.visible .tool-card:nth-child(17){ transition-delay:0.85s; }
+.toolkit-category.visible .tool-card:nth-child(18){ transition-delay:0.90s; }
+.toolkit-category.visible .tool-card:nth-child(19){ transition-delay:0.95s; }
+.toolkit-category.visible .tool-card:nth-child(20){ transition-delay:1.00s; }
+.toolkit-category.visible .tool-card:nth-child(21){ transition-delay:1.05s; }
+.toolkit-category.visible .tool-card:nth-child(22){ transition-delay:1.10s; }
+.toolkit-category.visible .tool-card:nth-child(23){ transition-delay:1.15s; }
+.toolkit-category.visible .tool-card:nth-child(24){ transition-delay:1.20s; }
+.toolkit-category.visible .tool-card:nth-child(25){ transition-delay:1.25s; }
+.toolkit-category.visible .tool-card:nth-child(26){ transition-delay:1.30s; }
+.toolkit-category.visible .tool-card:nth-child(27){ transition-delay:1.35s; }
+.toolkit-category.visible .tool-card:nth-child(28){ transition-delay:1.40s; }
+.toolkit-category.visible .tool-card:nth-child(29){ transition-delay:1.45s; }
+.toolkit-category.visible .tool-card:nth-child(30){ transition-delay:1.50s; }
+.toolkit-category.visible .tool-card:nth-child(31){ transition-delay:1.55s; }
+.toolkit-category.visible .tool-card:nth-child(32){ transition-delay:1.60s; }
+.toolkit-category.visible .tool-card:nth-child(33){ transition-delay:1.65s; }
+.toolkit-category.visible .tool-card:nth-child(34){ transition-delay:1.70s; }
+.toolkit-category.visible .tool-card:nth-child(35){ transition-delay:1.75s; }
+.toolkit-category.visible .tool-card:nth-child(36){ transition-delay:1.80s; }
+.toolkit-category.visible .tool-card:nth-child(37){ transition-delay:1.85s; }
+.toolkit-category.visible .tool-card:nth-child(38){ transition-delay:1.90s; }
+.toolkit-category.visible .tool-card:nth-child(39){ transition-delay:1.95s; }
+.toolkit-category.visible .tool-card:nth-child(40){ transition-delay:2.00s; }
+
+/* ===============================
+   TOOLKIT TOOLTIP POPUP
+   Floating explanation box that appears when hovering or clicking
+   on a tool logo.
+================================ */
+.tool-tooltip{
+    position:fixed;
+    max-width:280px;
+    padding:16px 18px;
+
+    background:rgba(14,14,16,0.88);
+    color:#F5F5F7;
+
+    border:1px solid rgba(255,106,43,0.35);
+    border-radius:18px;
+
+    font-family:'Plus Jakarta Sans', sans-serif;
+    font-size:13px;
+    line-height:1.6;
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,0.45),
+        0 0 30px rgba(255,106,43,0.18);
+
+    backdrop-filter:blur(14px);
+
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+
+    z-index:999999;
+
+    transform:translateY(10px);
+    transition:0.25s ease;
+}
+
+.tool-tooltip.active{
+    opacity:1;
+    visibility:visible;
+    transform:translateY(0);
+}
+
+/* ===============================
+   TOOLKIT GRID RESPONSIVE FALLBACK
+   Reduces the number of toolkit columns on medium and small screens.
+   Main responsive control is still handled in responsive.css.
+================================ */
+@media(max-width:1100px){
+    .tool-grid{
+        grid-template-columns:repeat(4,1fr);
+    }
+}
+
+@media(max-width:600px){
+    .tool-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+}

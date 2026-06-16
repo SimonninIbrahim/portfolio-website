@@ -1,0 +1,124 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<!--
+    404 PAGE HEAD
+    Loads the error page metadata, fonts, and page-specific styling.
+-->
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>404</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+<!-- Page-specific CSS kept inline because this page is small and standalone -->
+<style>
+
+/* Reset default browser spacing */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    min-height:100vh;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(255,122,24,0.18), transparent 35%),
+        #0E0E10;
+
+    color:#F5F5F7;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-family:'Poppins', sans-serif;
+}
+
+.error-page{
+    text-align:center;
+    padding:40px;
+}
+
+.error-logo{
+    width:90px;
+    margin-bottom:35px;
+    opacity:0.85;
+}
+
+.error-code{
+    font-family:'Playfair Display', serif;
+    font-size:140px;
+    line-height:1;
+    color:#FF6A2B;
+}
+
+.error-title{
+    font-size:28px;
+    margin-top:20px;
+}
+
+.error-text{
+    margin:18px auto 34px;
+    max-width:460px;
+    color:#B8B8BE;
+    line-height:1.7;
+}
+
+.error-btn{
+    display:inline-block;
+    padding:14px 28px;
+    border-radius:999px;
+    text-decoration:none;
+
+    background:linear-gradient(135deg,#FF7A18,#FF4D00);
+    color:#000;
+
+    font-weight:600;
+
+    box-shadow:0 15px 40px rgba(255,77,0,0.35);
+
+    transition:0.3s;
+}
+
+.error-btn:hover{
+    transform:translateY(-4px);
+    box-shadow:0 25px 60px rgba(255,77,0,0.5);
+}
+</style>
+</head>
+
+
+<!--
+    404 PAGE BODY
+    Displays the portfolio logo, error message, and return-home action.
+-->
+<body>
+
+<!-- Centered error content wrapper -->
+<div class="error-page">
+
+    <!-- Portfolio logo shown above the error code -->
+    <img class="error-logo" src="{% static 'images/Logo.png' %}" alt="Logo">
+
+    <!-- Large 404 number -->
+    <div class="error-code">404</div>
+
+    <!-- Main error message -->
+    <h1 class="error-title">This page slipped out of frame.</h1>
+
+    <!-- Short explanation text -->
+    <p class="error-text">
+        The page you are looking for does not exist, or it may have been moved.
+        Let’s take you back to the main portfolio.
+    </p>
+
+    <!-- Return-home button -->
+    <a href="{% url 'home' %}" class="error-btn">Return Home</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,422 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+<link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+<link rel="stylesheet" href="{% static 'css/footer.css' %}">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/gsap@3/dist/SplitText.min.js"></script>
+
+<canvas id="spark-canvas"></canvas>
+
+<script src="{% static 'js/clickSpark.js' %}"></script>
+<script>
+initClickSpark();
+</script>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+
+body{
+    background:#0E0E10;
+    color:#F5F5F7;
+}
+
+/* ---------------- TOP ---------------- */
+
+.about-top{
+    height:65vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background-image:url("{% static 'images/About3.png' %}");
+    background-size:cover;
+    background-position: center 35%;
+    background-repeat:no-repeat;
+    border-bottom-left-radius:80px;
+    border-bottom-right-radius:80px;
+    box-shadow:
+        0 40px 80px rgba(0,0,0,0.6),
+        0 15px 40px rgba(0,0,0,0.4);
+    position:relative;
+    z-index:5;
+}
+
+/* ---------------- MAIN ---------------- */
+
+.about-main{
+    position:relative;
+    z-index:1;
+    margin-top:-120px;
+    padding:220px 8% 80px;
+    background:#18181B;
+    border-radius:80px;
+    box-shadow:
+        0 40px 80px rgba(0,0,0,0.65),
+        0 15px 40px rgba(0,0,0,0.45);
+}
+
+/* ---------------- TIMELINE ---------------- */
+
+.about-grid{
+    max-width:1100px;
+    margin:auto;
+    position:relative;
+    padding-left:160px;
+}
+
+/* vertical line */
+.about-grid::before{
+    content:"";
+    position:absolute;
+    left:70px;
+    top:40px;
+    bottom:40px;
+    width:4px;
+    background:linear-gradient(to bottom, transparent, #FF6A2B 8%, #FF6A2B 92%, transparent);
+    border-radius:10px;
+}
+
+/* timeline item */
+.about-block{
+    position:relative;
+    margin-bottom:100px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    align-items:center;
+    gap:40px;
+}
+
+/* icon circle */
+.about-block::before{
+    content:"";
+    position:absolute;
+    left:-98px;
+    top:50%;
+    transform:translateY(-50%);
+    width:22px;
+    height:22px;
+    background:#18181B;
+    border:5px solid #FF6A2B;
+    border-radius:50%;
+    z-index:2;
+    box-shadow:0 0 0 6px rgba(229,161,0,0.15);
+}
+
+/* content box */
+.about-content{
+    background:rgba(255,255,255,0.96);
+    backdrop-filter:blur(6px);
+    color:#0E0E10;
+    padding:35px;
+    border-radius:12px;
+    border-left:4px solid #FF6A2B;
+    box-shadow:
+        0 10px 30px rgba(0,0,0,0.25),
+        inset 0 0 0 1px rgba(0,0,0,0.05);
+    transition:0.4s;
+}
+
+.about-content:hover{
+    transform:translateY(-6px);
+    box-shadow:
+        0 20px 50px rgba(0,0,0,0.35);
+}
+
+/* alternate sides */
+.about-block:nth-child(even){
+    grid-template-columns:1fr 1fr;
+}
+
+.about-block:nth-child(even) .about-content{
+    grid-column:2;
+}
+
+/* ---------------- TEXT ---------------- */
+
+.about-block h2{
+    font-family:'Playfair Display', serif;
+    font-size:32px;
+    margin-bottom:10px;
+    overflow:hidden;
+}
+
+.about-block p{
+    font-family:'Plus Jakarta Sans', sans-serif;
+    color:#333;
+    line-height:1.7;
+}
+
+/* animations compatibility */
+.scroll-float { overflow:hidden; }
+.scroll-float-text { display:inline-block; line-height:1.5; }
+.char { display:inline-block; }
+
+/* ---------------- MOBILE ---------------- */
+
+@media(max-width:768px){
+
+.about-grid{
+    padding-left:80px;
+}
+
+.about-grid::before{
+    left:30px;
+}
+
+.about-block{
+    grid-template-columns:1fr;
+}
+
+.about-block::before{
+    left:-52px;
+}
+
+.about-block:nth-child(even) .about-content{
+    grid-column:auto;
+}
+
+}
+
+/* MARQUEE */
+.marquee-section{
+    height:950px;
+    overflow:hidden;
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    perspective:2000px;
+    background:#18181B;
+
+    margin-top:-220px;
+    padding-top:220px;
+}
+
+.marquee-section::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:260px;
+    background:linear-gradient(to bottom,#0E0E10,transparent);
+    pointer-events:none;
+    z-index:2;
+}
+
+.marquee-wrapper{
+    position:relative;
+    z-index:3;
+    width:3200px;
+    height:3200px;
+    transform:rotateX(45deg) rotateZ(-45deg) translate(100px,-560px);
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:80px;
+}
+
+.marquee-column{
+    display:flex;
+    flex-direction:column;
+    gap:80px;
+    animation-duration:22s;
+    animation-iteration-count:infinite;
+    animation-timing-function:ease-in-out;
+    animation-direction:alternate;
+}
+
+.marquee-column:nth-child(odd){ animation-name:moveDown; }
+.marquee-column:nth-child(even){ animation-name:moveUp; }
+
+@keyframes moveDown{
+    from{ transform:translateY(-350px); }
+    to{ transform:translateY(350px); }
+}
+@keyframes moveUp{
+    from{ transform:translateY(350px); }
+    to{ transform:translateY(-350px); }
+}
+
+.marquee-item{
+    width:100%;
+    height:480px;
+    border-radius:32px;
+    overflow:hidden;
+    position:relative;
+    transform-style:preserve-3d;
+}
+
+.marquee-item img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+}
+
+
+.marquee-item:hover{
+    transform:translateY(-30px);
+    box-shadow:0 60px 120px rgba(0,0,0,0.6);
+}
+
+/* PANEL COLORS */
+.color1{background:#FF7A18;}
+.color2{background:#FF4D00;}
+.color3{background:#FF814A;}
+.color4{background:#F5F5F7;}
+.color5{background:#FF6A2B;}
+.color6{background:#FF3D00;}
+.color7{background:#FFE5D9;}
+.color8{background:#FFD6C4;}
+
+</style>
+</head>
+
+<body>
+
+{% include "components/navbar.html" %}
+
+<section class="about-top">
+    
+</section>
+
+<section class="about-main">
+
+    <div class="about-grid">
+
+        <div class="about-block">
+            <div class="about-content">
+                <h2 class="split-animate">Personal Info</h2>
+                <p>
+                    A Computer Science graduate passionate about building digital solutions
+                    and continuously improving both technical and analytical capabilities.
+                </p>
+            </div>
+        </div>
+
+        <div class="about-block">
+            <div class="about-content">
+                <h2 class="scroll-float">Languages</h2>
+                <p>
+                    Fluent in English and Arabic with strong communication skills
+                    in technical and professional environments.
+                </p>
+            </div>
+        </div>
+
+        <div class="about-block">
+            <div class="about-content">
+                <h2 class="scroll-float">Education</h2>
+                <p>
+                    Bachelor’s Degree in Computer Science from KFUPM and currently
+                    pursuing a Master’s in Data Science & Analytics.
+                </p>
+            </div>
+        </div>
+
+        <div class="about-block">
+            <div class="about-content">
+                <h2 class="scroll-float">Certificates</h2>
+                <p>
+                    Technical certifications supporting practical development
+                    and analytical work.
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="marquee-section">
+<div class="marquee-wrapper">
+
+<div class="marquee-column">
+<div class="marquee-item">
+    <img src="{% static 'images/Unity2.png' %}" alt="">
+</div>
+<div class="marquee-item color2"></div>
+<div class="marquee-item color3"></div>
+<div class="marquee-item color4"></div>
+<div class="marquee-item color5"></div>
+</div>
+
+<div class="marquee-column">
+<div class="marquee-item color6"></div>
+<div class="marquee-item">
+    <img src="{% static 'images/Blender1.png' %}" alt="">
+</div>
+<div class="marquee-item">
+    <img src="{% static 'images/Python.png' %}" alt="">
+</div>
+<div class="marquee-item">
+    <img src="{% static 'images/Unity2.png' %}" alt="">
+</div>
+<div class="marquee-item color2"></div>
+</div>
+
+<div class="marquee-column">
+<div class="marquee-item color3"></div>
+<div class="marquee-item color4"></div>
+<div class="marquee-item color5"></div>
+<div class="marquee-item color6"></div>
+<div class="marquee-item">
+    <img src="{% static 'images/Blender1.png' %}" alt="">
+</div>
+</div>
+
+<div class="marquee-column">
+<div class="marquee-item">
+    <img src="{% static 'images/Python.png' %}" alt="">
+</div>
+<div class="marquee-item">
+    <img src="{% static 'images/Unity2.png' %}" alt="">
+</div>
+<div class="marquee-item color2"></div>
+<div class="marquee-item color3"></div>
+<div class="marquee-item color4"></div>
+</div>
+
+<div class="marquee-column">
+<div class="marquee-item color5"></div>
+<div class="marquee-item color6"></div>
+<div class="marquee-item">
+    <img src="{% static 'images/Blender1.png' %}" alt="">
+</div>
+<div class="marquee-item">
+    <img src="{% static 'images/Python.png' %}" alt="">
+</div>
+<div class="marquee-item">
+    <img src="{% static 'images/Unity2.png' %}" alt="">
+</div>
+</div>
+
+<div class="marquee-column">
+<div class="marquee-item color2"></div>
+<div class="marquee-item color3"></div>
+<div class="marquee-item color4"></div>
+<div class="marquee-item color5"></div>
+<div class="marquee-item color6"></div>
+</div>
+
+</div>
+</section>
+
+{% include "components/footer.html" %}
+
+<script src="{% static 'js/scroll-float.js' %}"></script>
+<script src="{% static 'js/split-personal.js' %}"></script>
+
+</body>
+</html>

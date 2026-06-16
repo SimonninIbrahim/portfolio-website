@@ -1,0 +1,109 @@
+/* ===============================
+   HOBBIES SECTION BACKGROUND
+   Controls the stacked Hobbies section depth and the darker,
+   relaxed gradient atmosphere behind the hobby cards.
+================================ */
+.hobbies-layer{
+    z-index:4;
+    background:
+        radial-gradient(circle at 25% 20%, rgba(255,229,217,0.10), transparent 35%),
+        linear-gradient(135deg,#232326 0%,#18181B 60%,#0E0E10 100%);
+}
+
+/* ===============================
+   HOBBY LIST LAYOUT
+   Stacks all hobby cards vertically and controls the spacing
+   between each hobby item.
+================================ */
+.hobby-list{
+    margin-top:35px;
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+/* ===============================
+   HOBBY CARD DESIGN
+   Creates the glass hobby card layout with three columns:
+   hobby name, center icon, and years counter.
+================================ */
+.hobby-item{
+    display:grid;
+    grid-template-columns:1fr 120px 1fr;
+    align-items:center;
+
+    padding:18px 28px;
+    border-radius:24px;
+
+    background:rgba(255, 255, 255, 0.022);
+    border:1px solid rgba(255, 106, 0, 0.508);
+    backdrop-filter:blur(12px);
+
+    transition:0.35s;
+    
+}
+
+.hobby-item:hover{
+    transform:translateY(-6px);
+    border-color:rgba(255,106,43,0.4);
+    box-shadow:0 25px 60px rgba(0,0,0,0.35);
+}
+
+.hobby-item:hover::after{
+    left:140%;
+}
+
+/* ===============================
+   HOBBY NAME
+   Styles the large orange hobby title shown on the left side
+   of each card.
+================================ */
+.hobby-name{
+    font-size:38px;
+    font-weight:700;
+    color:#FF6A2B;
+    line-height:1;
+    text-align:left;
+}
+
+/* ===============================
+   HOBBY ICON
+   Centers and sizes the large Font Awesome icon shown in the
+   middle of each hobby card.
+================================ */
+.hobby-icon{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.hobby-icon i{
+    color:#F5F5F7;
+    font-size:105px;
+    transform:translateX(90px);
+}
+
+/* ===============================
+   HOBBY YEARS COUNTER
+   Styles the right-side counter number and label showing how
+   many years each hobby has been practiced.
+================================ */
+.hobby-years{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-end;
+}
+
+.years-number{
+    font-size:58px;
+    font-weight:700;
+    color:#FF6A2B;
+    line-height:1;
+}
+
+.years-label{
+    font-size:17px;
+    text-transform:uppercase;
+    letter-spacing:2px;
+    color:#d4d4d7;
+}

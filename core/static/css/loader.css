@@ -1,0 +1,99 @@
+/* ===============================
+   PORTFOLIO LOADING SCREEN
+================================ */
+
+/* ===============================
+   LOADING SCREEN OVERLAY
+   Full-screen startup overlay displayed while the portfolio
+   initializes and prepares all assets.
+================================ */
+#loading-screen{
+    position:fixed;
+    inset:0;
+    background:#0E0E10;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    z-index:99999;
+
+    transition:
+        opacity 0.8s ease,
+        visibility 0.8s ease;
+}
+
+#loading-screen.hidden{
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+}
+
+/* ===============================
+   CIRCULAR SLASH LOADER
+   Creates the animated ring of rotating slash segments around
+   the center loading message.
+================================ */
+.slash-loader{
+    position:relative;
+    width:170px;
+    height:170px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.slash-loader span{
+    position:absolute;
+    width:8px;
+    height:34px;
+
+    background:#F5F5F7;
+    border-radius:999px;
+
+    transform:
+        rotate(calc(var(--i) * 30deg))
+        translateY(-66px);
+
+    opacity:0.18;
+
+    animation:slashPulse 1.2s linear infinite;
+    animation-delay:calc(var(--i) * 0.08s);
+}
+
+/* ===============================
+   LOADER CENTER TEXT
+   Displays the short call-to-action word in the center of the
+   loading animation.
+================================ */
+.loader-word{
+    position:absolute;
+
+    color:#F5F5F7;
+    font-family:'Plus Jakarta Sans', sans-serif;
+    font-size:12px;
+    font-weight:600;
+    letter-spacing:3px;
+
+    text-transform:uppercase;
+}
+
+/* ===============================
+   SLASH PULSE ANIMATION
+   Sequentially illuminates each slash segment to create the
+   illusion of circular motion around the loader.
+================================ */
+@keyframes slashPulse{
+    0%{
+        opacity:1;
+        background:#FF6A2B;
+        box-shadow:0 0 18px rgba(255,106,43,0.65);
+    }
+
+    100%{
+        opacity:0.18;
+        background:#F5F5F7;
+        box-shadow:none;
+    }
+}

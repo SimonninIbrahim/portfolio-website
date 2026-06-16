@@ -1,0 +1,266 @@
+/* ===============================
+   GLOBAL RESET
+   Removes default browser spacing, applies border-box sizing,
+   and sets the default font family across the website.
+================================ */
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+
+/* ===============================
+   PAGE DEFAULTS
+   Prevents horizontal scrolling and sets the main background,
+   text color, and smooth scrolling behavior.
+================================ */
+html, body{
+    max-width:100%;
+    overflow-x:hidden;
+}
+
+body{
+    background:#0E0E10;
+    color:#F5F5F7;
+    scroll-behavior:smooth;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+/* ===============================
+   SCROLL PROGRESS BAR
+   Fixed top progress line that grows horizontally as the user
+   scrolls through the page.
+================================ */
+.scroll-progress-bar{
+    position:fixed;
+    top:0;
+    left:0;
+    height:4px;
+    width:0%;
+    z-index:999999;
+    background:linear-gradient(90deg,#FF7A18,#FF4D00);
+    box-shadow:0 0 18px rgba(255,106,43,0.7);
+}
+
+/* ===============================
+   SHARED STACKED SECTION SYSTEM
+   Base layout for the main stacked page sections, including
+   spacing, rounded corners, depth shadows, and inner content width.
+================================ */
+.page-layer{
+    position:relative;
+    margin-top:-90px;
+    padding:170px 8% 110px;
+    border-radius:80px;
+    box-shadow:
+        0 40px 80px rgba(0,0,0,0.62),
+        0 15px 40px rgba(0,0,0,0.42),
+        inset 0 1px 0 rgba(255,255,255,0.04);
+}
+
+.layer-inner{
+    max-width:1300px;
+    margin:auto;
+}
+
+.layer-kicker{
+    color:#FF6A2B;
+    text-transform:uppercase;
+    letter-spacing:3px;
+    font-size:13px;
+    font-family:'Plus Jakarta Sans', sans-serif;
+}
+
+.layer-title{
+    font-family:'Playfair Display', serif;
+    font-size:39px;
+    margin-top:10px;
+    margin-bottom:35px;
+}
+
+.layer-text{
+    font-family:'Plus Jakarta Sans', sans-serif;
+    color:#B8B8BE;
+    line-height:1.85;
+    max-width:760px;
+}
+
+.title-bracket{
+    color:#FF6A2B;
+    font-family:'Plus Jakarta Sans', sans-serif;
+    font-weight:500;
+}
+
+/* ===============================
+   SECTION REVEAL ANIMATION
+   Keeps section containers stable while animating only their inner
+   content when JavaScript adds the .visible class.
+================================ */
+.reveal-section{
+    opacity:1;
+    transform:none;
+    filter:none;
+}
+
+.reveal-section > .layer-inner,
+.reveal-section > .info-layer-inner,
+.reveal-section > .marquee-wrapper{
+    opacity:0;
+    transform:translateY(70px);
+    filter:blur(10px);
+
+    transition:
+        opacity 0.9s ease,
+        transform 0.9s ease,
+        filter 0.9s ease;
+}
+
+.reveal-section.visible > .layer-inner,
+.reveal-section.visible > .info-layer-inner,
+.reveal-section.visible > .marquee-wrapper{
+    opacity:1;
+    transform:translateY(0);
+    filter:blur(0);
+}
+
+/* ===============================
+   TEXT REVEAL ON SCROLL
+   Used for titles and important text elements that fade, rise,
+   and sharpen when they enter the viewport.
+================================ */
+.text-reveal{
+    opacity:0;
+    transform:translateY(35px);
+    filter:blur(8px);
+    letter-spacing:2px;
+
+    transition:
+        opacity 0.75s ease,
+        transform 0.75s ease,
+        filter 0.75s ease,
+        letter-spacing 0.75s ease;
+}
+
+.text-reveal.text-visible{
+    opacity:1;
+    transform:translateY(0);
+    filter:blur(0);
+    letter-spacing:0;
+}
+
+/* ===============================
+   SIDE SECTION NAVIGATION
+   Fixed right-side navigation dots used to jump between sections
+   and highlight the currently active section.
+================================ */
+.side-section-nav{
+    position:fixed;
+    right:28px;
+    top:50%;
+    transform:translateY(-50%);
+
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+
+    z-index:9999;
+}
+
+.side-nav-item{
+    position:relative;
+
+    width:12px;
+    height:12px;
+    border-radius:50%;
+
+    background:rgba(255,255,255,0.28);
+
+    transition:0.3s;
+}
+
+.side-nav-item::before{
+    content:attr(data-label);
+
+    position:absolute;
+    right:24px;
+    top:50%;
+    transform:translateY(-50%);
+
+    opacity:0;
+    pointer-events:none;
+
+    color:#F5F5F7;
+    background:rgba(14,14,16,0.75);
+    border:1px solid rgba(255,255,255,0.08);
+
+    padding:6px 12px;
+    border-radius:999px;
+
+    font-size:12px;
+    white-space:nowrap;
+
+    backdrop-filter:blur(8px);
+
+    transition:0.3s;
+}
+
+.side-nav-item:hover::before{
+    opacity:1;
+    right:30px;
+}
+
+.side-nav-item:hover{
+    background:#FF6A2B;
+    box-shadow:0 0 20px rgba(255,106,43,0.6);
+}
+
+.side-nav-item.active{
+    height:34px;
+    border-radius:999px;
+
+    background:linear-gradient(180deg,#FF7A18,#FF4D00);
+    box-shadow:0 0 25px rgba(255,106,43,0.7);
+}
+
+/* ===============================
+   SHARED GLASS REFLECTION EFFECT
+   Adds a diagonal light sweep effect to selected card components
+   when the user hovers over them.
+================================ */
+.info-card,
+.project-card,
+.hobby-item,
+.personal-info-card{
+    position:relative;
+    overflow:hidden;
+}
+
+.info-card:hover::after,
+.project-card:hover::after,
+.hobby-item:hover::after,
+.personal-info-card:hover::after{
+    left:140%;
+}
+
+/* Reflection beam */
+.info-card::after,
+.project-card::after,
+.hobby-item::after,
+.personal-info-card::after{
+    content:"";
+    position:absolute;
+    top:-140%;
+    left:-120%;
+    width:45%;
+    height:340%;
+
+    background:linear-gradient(
+        120deg,
+        transparent 0%,
+        rgba(255,255,255,0.16) 50%,
+        transparent 100%
+    );
+
+    transform:rotate(25deg);
+    transition:left 0.75s ease;
+    pointer-events:none;
+}

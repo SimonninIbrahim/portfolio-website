@@ -1,0 +1,39 @@
+{% load static %}
+
+<!--
+    FOOTER SECTION
+    Final page footer containing the portfolio logo, closing message,
+    and external social/contact links.
+-->
+<footer class="footer-container">
+
+    <div class="footer-row">
+
+    <!-- Footer logo / brand mark -->
+        <div class="footer-brand">
+            <img src="{% static 'images/Logo.png' %}" alt="Logo">
+        </div>
+
+    <!-- Short closing message for recruiters or reviewers -->
+        <div class="footer-message">
+            Thank you for reviewing my portfolio — I look forward to meaningful collaborations.
+        </div>
+
+    <!-- External links: LinkedIn, GitHub, and email -->
+        <div class="footer-social">
+            <a href="https://www.linkedin.com/in/ibrahim-simonnin/" class="footer-social-btn" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-linkedin-in"></i>
+            </a>
+
+            <a href="https://github.com/SimonninIbrahim" class="footer-social-btn" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-github"></i>
+            </a>
+
+            <a href="mailto:ps24@hotmail.fr" class="footer-social-btn" target="_blank" rel="noopener noreferrer">
+                <i class="fa-solid fa-envelope"></i>
+            </a>
+        </div>
+
+    </div>
+
+</footer>

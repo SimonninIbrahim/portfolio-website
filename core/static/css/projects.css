@@ -1,0 +1,375 @@
+
+/* ===============================
+   PROJECTS SECTION BACKGROUND
+   Creates the dark showcase area used to present portfolio
+   projects while keeping strong contrast with the white cards.
+================================ */
+.projects-layer{
+    z-index:6;
+    background:
+        linear-gradient(135deg,#0E0E10 0%,#18181B 45%,#232326 100%);
+    color:#F5F5F7;
+}
+
+.projects-layer .layer-kicker,
+.projects-layer .layer-text{
+    color:#F5F5F7;
+}
+
+/* ===============================
+   PROJECTS GRID LAYOUT
+   Arranges project cards into a responsive multi-column grid
+   with consistent spacing between projects.
+================================ */
+.projects-grid{
+    margin-top:60px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:36px;
+}
+
+/* ===============================
+   PROJECT CARD DESIGN
+   Styles the main project container, hover elevation effect,
+   shadow depth, and glass reflection support.
+================================ */
+.project-card{
+    overflow:hidden;
+    border-radius:28px;
+    background:#F5F5F7;
+    transition:0.35s;
+    box-shadow:0 25px 65px rgba(0,0,0,0.28);
+
+    position:relative;
+}
+
+/* Bring shared reflection sweep above project content */
+.project-card::after{
+    z-index:10;
+}
+
+.project-card:hover{
+    transform:translateY(-10px);
+}
+
+.project-card:hover::after{
+    left:140%;
+}
+
+/* ===============================
+   PROJECT IMAGE SLIDER
+   Controls the image carousel area, image transitions,
+   active slide state, and hover zoom effect.
+================================ */
+.project-slider{
+    height:255px;
+    position:relative;
+    overflow:hidden;
+    background:#18181B;
+}
+
+.project-slide{
+    position:absolute;
+    inset:0;
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+    display:block;
+
+    opacity:0;
+    transform:scale(1.001);
+
+    transition:
+        opacity 0.35s ease,
+        transform 0.45s ease;
+
+    backface-visibility:hidden;
+    will-change:transform, opacity;
+}
+
+.project-slide.active{
+    opacity:1;
+    z-index:1;
+}
+
+.project-card:hover .project-slide.active{
+    transform:scale(1.07);
+}
+
+/* ===============================
+   PROJECT SLIDER ARROWS
+   Previous and next controls used to cycle through project
+   images inside each project card.
+================================ */
+.project-arrow{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    z-index:2;
+
+    width:38px;
+    height:38px;
+    border-radius:50%;
+    border:none;
+
+    background:rgba(14,14,16,0.65);
+    color:#F5F5F7;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    cursor:pointer;
+    transition:0.25s;
+}
+
+.project-arrow:hover{
+    background:#FF6A2B;
+}
+
+.project-arrow-left{
+    left:14px;
+}
+
+.project-arrow-right{
+    right:14px;
+}
+
+/* ===============================
+   PROJECT CONTENT AREA
+   Styles project information including year, role,
+   title, and descriptive summary.
+================================ */
+.project-content{
+    padding:26px;
+}
+
+.project-meta{
+    display:flex;
+    gap:12px;
+    align-items:center;
+    margin-bottom:18px;
+}
+
+.project-year{
+    background:#FFE5D9;
+    color:#FF4D00;
+    padding:7px 12px;
+    border-radius:7px;
+    font-size:12px;
+    font-weight:600;
+}
+
+.project-role{
+    color:#356BFF;
+    font-size:13px;
+}
+
+.project-content h3{
+    color:#18181B;
+    font-size:22px;
+    margin-bottom:14px;
+    font-family:'Playfair Display', serif;
+}
+
+.project-content p{
+    color:#505050;
+    line-height:1.65;
+    margin-bottom:20px;
+    font-size:15px;
+}
+
+/* ===============================
+   PROJECT TECHNOLOGY TAGS
+   Displays technologies, tools, and skills associated
+   with each project.
+================================ */
+.project-tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+}
+
+.project-tags span{
+    padding:7px 12px;
+    border:1px solid #d5d5d5;
+    border-radius:7px;
+    font-size:12px;
+
+    color:#18181B;
+    background:#FFE5D9;
+}
+
+/* ===============================
+   PROJECT IMAGE COUNTER
+   Shows the current image index and total number of images
+   within a project carousel.
+================================ */
+.project-image-counter{
+    position:absolute;
+    right:16px;
+    bottom:14px;
+    z-index:4;
+
+    padding:7px 12px;
+    border-radius:999px;
+
+    background:rgba(14,14,16,0.72);
+    color:#F5F5F7;
+
+    font-size:12px;
+    font-family:'Plus Jakarta Sans', sans-serif;
+
+    display:flex;
+    gap:5px;
+    align-items:center;
+
+    backdrop-filter:blur(8px);
+    border:1px solid rgba(255,255,255,0.08);
+}
+
+.current-slide{
+    color:#FF6A2B;
+    font-weight:600;
+}
+
+/* ===============================
+   PROJECT FULLSCREEN BUTTON
+   Opens the currently displayed project image inside
+   the fullscreen lightbox viewer.
+================================ */
+.project-fullscreen-btn{
+    position:absolute;
+    left:16px;
+    bottom:14px;
+    z-index:5;
+
+    width:38px;
+    height:38px;
+    border-radius:50%;
+    border:none;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:rgba(14,14,16,0.72);
+    color:#F5F5F7;
+
+    cursor:pointer;
+    backdrop-filter:blur(8px);
+    border:1px solid rgba(255,255,255,0.08);
+
+    transition:0.25s;
+}
+
+.project-fullscreen-btn:hover{
+    background:#FF6A2B;
+    color:#000;
+}
+
+/* ===============================
+   PROJECT IMAGE LIGHTBOX
+   Fullscreen image viewer used to inspect project renders
+   with close, previous, and next navigation controls.
+================================ */
+.project-lightbox{
+    position:fixed;
+    inset:0;
+    z-index:9999999;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:rgba(0,0,0,0.82);
+    backdrop-filter:blur(10px);
+
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+
+    transition:0.35s;
+}
+
+.project-lightbox.active{
+    opacity:1;
+    visibility:visible;
+    pointer-events:auto;
+}
+
+.lightbox-image{
+    max-width:82vw;
+    max-height:82vh;
+    object-fit:contain;
+
+    border-radius:26px;
+
+    box-shadow:
+        0 40px 120px rgba(0,0,0,0.7),
+        0 0 50px rgba(255,106,43,0.18);
+}
+
+.lightbox-close{
+    position:absolute;
+    top:34px;
+    right:42px;
+
+    width:46px;
+    height:46px;
+    border-radius:50%;
+    border:none;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:rgba(255,255,255,0.08);
+    color:#F5F5F7;
+    font-size:20px;
+    cursor:pointer;
+
+    transition:0.25s;
+}
+
+.lightbox-close:hover{
+    background:#FF6A2B;
+    color:#000;
+}
+
+.lightbox-arrow{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+
+    width:54px;
+    height:54px;
+    border-radius:50%;
+    border:none;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:rgba(255,255,255,0.08);
+    color:#F5F5F7;
+    font-size:22px;
+    cursor:pointer;
+
+    transition:0.25s;
+}
+
+.lightbox-arrow:hover{
+    background:#FF6A2B;
+    color:#000;
+}
+
+.lightbox-prev{
+    left:42px;
+}
+
+.lightbox-next{
+    right:42px;
+}

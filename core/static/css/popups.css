@@ -1,0 +1,537 @@
+/* ===============================
+   CONTACT POPUP OVERLAY
+   Creates the full-screen dark blurred background for the navbar
+   contact popup and controls its hidden/active visibility states.
+================================ */
+.contact-popup-overlay{
+    position:fixed;
+    inset:0;
+    z-index:999999;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:rgba(0,0,0,0.72);
+    backdrop-filter:blur(10px);
+
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+
+    transition:0.35s;
+}
+
+.contact-popup-overlay.active{
+    opacity:1;
+    visibility:visible;
+    pointer-events:auto;
+}
+
+/* ===============================
+   CONTACT POPUP BOX
+   Styles the main contact card, including glass background,
+   orange glow, entrance transform, close button, and heading.
+================================ */
+.contact-popup-box{
+    position:relative;
+    width:min(430px, 90vw);
+
+    padding:38px;
+    border-radius:30px;
+
+    background:
+        radial-gradient(circle at 20% 15%, rgba(255,106,43,0.18), transparent 38%),
+        #18181B;
+
+    border:1px solid rgba(255,255,255,0.09);
+
+    box-shadow:
+        0 35px 100px rgba(0,0,0,0.65),
+        0 0 45px rgba(255,106,43,0.16);
+
+    transform:translateY(25px) scale(0.96);
+    transition:0.35s;
+}
+
+.contact-popup-overlay.active .contact-popup-box{
+    transform:translateY(0) scale(1);
+}
+
+.contact-popup-close{
+    position:absolute;
+    top:18px;
+    right:18px;
+
+    width:38px;
+    height:38px;
+
+    border:none;
+    border-radius:50%;
+
+    background:rgba(255,255,255,0.07);
+    color:#F5F5F7;
+
+    cursor:pointer;
+}
+
+.contact-kicker{
+    color:#FF6A2B;
+    font-size:12px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+}
+
+.contact-popup-box h2{
+    margin:10px 0 28px;
+    font-family:'Playfair Display', serif;
+    font-size:42px;
+    color:#F5F5F7;
+}
+
+/* ===============================
+   CONTACT INFORMATION ITEMS
+   Arranges email, phone, and LinkedIn rows with clickable links,
+   icons, hover feedback, and spacing between each contact method.
+================================ */
+.contact-popup-list{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+}
+
+.contact-popup-item{
+    display:flex;
+    align-items:center;
+    gap:14px;
+
+    padding:15px 16px;
+    border-radius:18px;
+
+    background:rgba(255,255,255,0.045);
+    border:1px solid rgba(255,255,255,0.08);
+
+    color:#F5F5F7;
+    text-decoration:none;
+
+    transition:0.3s;
+    justify-content:space-between;
+}
+
+.contact-popup-item i{
+    color:#FF6A2B;
+    font-size:18px;
+    width:22px;
+}
+
+.contact-popup-item a{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    color:#F5F5F7;
+    text-decoration:none;
+}
+
+.contact-popup-item span{
+    font-family:'Plus Jakarta Sans', sans-serif;
+    font-size:14px;
+}
+
+.contact-popup-item:hover{
+    background:rgba(255,106,43,0.12);
+    border-color:rgba(255,106,43,0.4);
+    transform:translateX(5px);
+}
+
+/* ===============================
+   CONTACT COPY BUTTON
+   Small circular button beside each contact item used to copy
+   the email, phone number, or LinkedIn link.
+================================ */
+.copy-contact-btn{
+    border:none;
+    background:rgba(255,255,255,0.07);
+    color:#F5F5F7;
+    width:34px;
+    height:34px;
+    border-radius:50%;
+    cursor:pointer;
+    transition:0.25s;
+}
+
+.copy-contact-btn:hover{
+    background:#FF6A2B;
+    color:#0E0E10;
+}
+
+/* ===============================
+   SIMPLE CERTIFICATE POPUP
+   Full-screen viewer used by direct certificate buttons, such as
+   experience and Mawhiba certificates.
+================================ */
+.certificate-popup{
+    position:fixed;
+    inset:0;
+    z-index:9999999;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:rgba(0,0,0,0.84);
+    backdrop-filter:blur(10px);
+
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+
+    transition:0.35s;
+}
+
+.certificate-popup.active{
+    opacity:1;
+    visibility:visible;
+    pointer-events:auto;
+}
+
+#certificate-image{
+    max-width:82vw;
+    max-height:82vh;
+    object-fit:contain;
+
+    border-radius:22px;
+
+    box-shadow:
+        0 40px 120px rgba(0,0,0,0.75),
+        0 0 55px rgba(255,106,43,0.18);
+}
+
+.certificate-close{
+    position:absolute;
+    top:34px;
+    right:42px;
+
+    width:46px;
+    height:46px;
+    border-radius:50%;
+    border:none;
+
+    background:rgba(255,255,255,0.08);
+    color:#F5F5F7;
+
+    font-size:20px;
+    cursor:pointer;
+}
+
+.certificate-arrow{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+
+    width:54px;
+    height:54px;
+    border-radius:50%;
+    border:none;
+
+    background:rgba(255,255,255,0.08);
+    color:#F5F5F7;
+
+    font-size:22px;
+    cursor:pointer;
+}
+
+.certificate-prev{
+    left:42px;
+}
+
+.certificate-next{
+    right:42px;
+}
+
+.certificate-close:hover,
+.certificate-arrow:hover{
+    background:#FF6A2B;
+    color:#0E0E10;
+}
+
+/* ===============================
+   CERTIFICATE EXPLORER OVERLAY
+   Opens the large desktop-folder style certificate archive window
+   over a dark blurred background.
+================================ */
+.certificate-explorer-overlay{
+    position:fixed;
+    inset:0;
+    z-index:9999999;
+
+    background:rgba(0,0,0,0.78);
+    backdrop-filter:blur(10px);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+
+    transition:0.35s;
+}
+
+.certificate-explorer-overlay.active{
+    opacity:1;
+    visibility:visible;
+    pointer-events:auto;
+}
+
+.certificate-explorer-window{
+    width:min(1050px, 92vw);
+    height:min(680px, 82vh);
+
+    border-radius:28px;
+    overflow:hidden;
+
+    background:#18181B;
+    border:1px solid rgba(255,255,255,0.1);
+
+    box-shadow:
+        0 45px 130px rgba(0,0,0,0.75),
+        0 0 55px rgba(255,106,43,0.18);
+
+    transform:translateY(28px) scale(0.96);
+    transition:0.35s;
+}
+
+.certificate-explorer-overlay.active .certificate-explorer-window{
+    transform:translateY(0) scale(1);
+}
+
+/* ===============================
+   CERTIFICATE EXPLORER TOP BAR
+   Creates the window header with decorative dots, centered title,
+   and close button similar to a desktop file explorer.
+================================ */
+.certificate-explorer-topbar{
+    height:58px;
+    padding:0 22px;
+
+    display:grid;
+    grid-template-columns:1fr auto 1fr;
+    align-items:center;
+
+    background:#0E0E10;
+    border-bottom:1px solid rgba(255,255,255,0.08);
+
+    color:#F5F5F7;
+    font-family:'Plus Jakarta Sans', sans-serif;
+    font-size:13px;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+}
+
+.window-dot{
+    display:inline-block;
+    width:11px;
+    height:11px;
+    margin-right:7px;
+    border-radius:50%;
+    background:#FF6A2B;
+    opacity:0.75;
+}
+
+#close-certificate-folder{
+    justify-self:end;
+
+    width:34px;
+    height:34px;
+    border:none;
+    border-radius:50%;
+
+    background:rgba(255,255,255,0.07);
+    color:#F5F5F7;
+
+    cursor:pointer;
+}
+
+/* ===============================
+   CERTIFICATE FILE GRID
+   Displays certificate thumbnails like large desktop icons,
+   with file names below and scroll support for many certificates.
+================================ */
+.certificate-grid{
+    padding:38px;
+
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:34px 28px;
+
+    overflow-y:auto;
+    max-height:calc(82vh - 58px);
+}
+
+.certificate-file{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:12px;
+
+    cursor:pointer;
+
+    padding:12px;
+    border-radius:18px;
+
+    transition:0.28s;
+}
+
+.certificate-file:hover{
+    background:rgba(255,106,43,0.10);
+    transform:translateY(-5px);
+}
+
+.certificate-file img{
+    width:100%;
+    aspect-ratio:16/10;
+    object-fit:contain;
+
+    padding:8px;
+
+    border-radius:12px;
+    background:#F5F5F7;
+
+    box-shadow:0 18px 38px rgba(0,0,0,0.4);
+
+    transition:0.3s;
+}
+
+.certificate-file:hover img{
+    transform:scale(1.08);
+    box-shadow:
+        0 28px 60px rgba(0,0,0,0.5),
+        0 0 28px rgba(255,106,43,0.2);
+}
+
+.certificate-file span{
+    color:#F5F5F7;
+    font-family:'Plus Jakarta Sans', sans-serif;
+    font-size:13px;
+    text-align:center;
+}
+
+/* ===============================
+   CERTIFICATE IMAGE VIEWER
+   Shows a selected certificate in a larger fullscreen preview
+   with close and previous/next navigation controls.
+================================ */
+.certificate-viewer-overlay{
+    position:fixed;
+    inset:0;
+    z-index:99999999;
+
+    background:rgba(0,0,0,0.88);
+    backdrop-filter:blur(12px);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+
+    transition:0.3s;
+}
+
+.certificate-viewer-overlay.active{
+    opacity:1;
+    visibility:visible;
+    pointer-events:auto;
+}
+
+#certificate-viewer-image{
+    max-width:82vw;
+    max-height:82vh;
+    object-fit:contain;
+
+    border-radius:22px;
+
+    box-shadow:
+        0 45px 130px rgba(0,0,0,0.8),
+        0 0 55px rgba(255,106,43,0.22);
+}
+
+.certificate-viewer-close{
+    position:absolute;
+    top:34px;
+    right:42px;
+
+    width:46px;
+    height:46px;
+    border:none;
+    border-radius:50%;
+
+    background:rgba(255,255,255,0.08);
+    color:#F5F5F7;
+
+    cursor:pointer;
+    font-size:20px;
+}
+
+.certificate-viewer-arrow{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+
+    width:54px;
+    height:54px;
+    border:none;
+    border-radius:50%;
+
+    background:rgba(255,255,255,0.08);
+    color:#F5F5F7;
+
+    cursor:pointer;
+    font-size:22px;
+}
+
+#certificate-prev{
+    left:42px;
+}
+
+#certificate-next{
+    right:42px;
+}
+
+.certificate-viewer-close:hover,
+.certificate-viewer-arrow:hover,
+#close-certificate-folder:hover{
+    background:#FF6A2B;
+    color:#0E0E10;
+}
+
+.certificate-counter{
+    position:absolute;
+    bottom:34px;
+    left:50%;
+    transform:translateX(-50%);
+
+    padding:8px 14px;
+    border-radius:999px;
+
+    background:rgba(14,14,16,0.75);
+    color:#F5F5F7;
+
+    font-family:'Plus Jakarta Sans', sans-serif;
+    font-size:13px;
+
+    display:flex;
+    gap:5px;
+    align-items:center;
+
+    backdrop-filter:blur(8px);
+    border:1px solid rgba(255,255,255,0.08);
+}
+
+#certificate-current{
+    color:#FF6A2B;
+    font-weight:700;
+}

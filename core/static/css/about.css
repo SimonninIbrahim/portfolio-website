@@ -1,0 +1,490 @@
+/* ===============================
+   ABOUT SECTION BACKGROUND
+   Controls the stacked About Me section color, depth order,
+   and warm orange/dark gradient atmosphere.
+================================ */
+.personal-layer{
+    z-index:8;
+    background:
+        radial-gradient(circle at 15% 20%, rgba(255,122,24,0.20), transparent 34%),
+        linear-gradient(135deg,#18181B 0%,#232326 55%,#2A1711 100%);
+}
+
+/* ===============================
+   EDUCATION LAYOUT
+   Splits the education timeline and the 3D KFUPM coin into
+   two columns on desktop.
+================================ */
+.education-showcase{
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:30px;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+/* ===============================
+   EDUCATION TIMELINE ITEMS
+   Styles each education entry, including the vertical orange
+   timeline line, glowing dot, hidden starting state, and slide-in animation.
+================================ */
+.timeline-item{
+    border-left:2px solid #FF6A2B;
+    padding:0 0 45px 32px;
+    position:relative;
+    opacity:0;
+    transform:translateX(-35px);
+    transition:
+        opacity 0.65s ease,
+        transform 0.65s ease;
+    
+}
+
+.timeline-item::before{
+    content:"";
+    position:absolute;
+    left:-7px;
+    top:0;
+    width:14px;
+    height:14px;
+    border-radius:50%;
+    background:#FF6A2B;
+    box-shadow:0 0 25px rgba(255,106,43,0.8);
+}
+
+.education-timeline.visible .timeline-item{
+    opacity:1;
+    transform:translateX(0);
+}
+
+.education-timeline.visible .timeline-item:nth-child(2){
+    transition-delay:0.10s;
+}
+
+.education-timeline.visible .timeline-item:nth-child(3){
+    transition-delay:0.22s;
+}
+
+.education-timeline.visible .timeline-item:nth-child(4){
+    transition-delay:0.34s;
+}
+
+.timeline-item h3{
+    font-family:'Playfair Display', serif;
+    font-size:28px;
+    margin-bottom:8px;
+}
+
+.timeline-item p{
+    color:#B8B8BE;
+    line-height:1;
+    max-width:650px;
+}
+
+.timeline-item:last-child{
+    border-left:none;
+}
+
+/* ===============================
+   3D KFUPM COIN AREA
+   Provides the transparent square container used by Three.js
+   to render the floating KFUPM octagon coin.
+================================ */
+.education-coin-area{
+    position:relative;
+    width:100%;
+    aspect-ratio:1/1;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:transparent;
+    border:none;
+    box-shadow:none;
+    overflow:visible;
+}
+
+
+#kfupm-coin{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+}
+
+/* ===============================
+   ABOUT SUBTITLES
+   Styles smaller section subtitles such as Education and Languages,
+   including the orange hashtag and reveal animation.
+================================ */
+.about-subtitle{
+    font-family:'Plus Jakarta Sans', sans-serif;
+    font-size:27px;
+    font-weight:600;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    color:#F5F5F7;
+
+    margin-bottom:26px;
+
+    opacity:0;
+    transform:translateY(18px);
+    transition:0.6s ease;
+}
+
+.about-subtitle::before{
+    content:"# ";
+    color:#FF6A2B;
+    font-weight:700;
+}
+
+.about-subtitle.visible{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* ===============================
+   LANGUAGES SECTION LAYOUT
+   Controls the spacing of the languages block and the three-card
+   grid layout used for Arabic, French, and English.
+================================ */
+.languages-section{
+    margin-bottom:110px;
+}
+
+
+.language-list{
+    margin:50px auto 0;
+
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:28px;
+}
+
+/* ===============================
+   LANGUAGE CARD DESIGN
+   Styles each language card with glass background, shadow,
+   hidden starting state, hover lift, and reveal animation.
+================================ */
+.language-item{
+    display:flex;
+    align-items:center;
+
+    padding:16px;
+
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:24px;
+
+    position:relative;
+    overflow:hidden;
+
+    background:
+        linear-gradient(145deg, rgba(255,106,43,0.12), rgba(255,255,255,0.035)),
+        rgba(255,255,255,0.035);
+
+    box-shadow:
+        0 20px 50px rgba(0,0,0,0.28),
+        inset 0 1px 0 rgba(255,255,255,0.05);
+
+    opacity:0;
+    transform:translateY(35px) scale(0.92);
+    transition:
+        opacity 0.65s ease,
+        transform 0.65s ease,
+        box-shadow 0.35s ease,
+        border-color 0.35s ease;
+}
+
+/* glass reflection line */
+.language-item::after{
+    content:"";
+    position:absolute;
+    top:-140%;
+    left:-120%;
+    width:45%;
+    height:340%;
+
+    background:linear-gradient(
+        120deg,
+        transparent 0%,
+        rgba(255,255,255,0.18) 50%,
+        transparent 100%
+    );
+
+    transform:rotate(25deg);
+    transition:left 0.75s ease;
+    pointer-events:none;
+}
+
+.language-item:hover::after{
+    left:140%;
+}
+
+.language-item:hover{
+    transform:translateY(-6px) scale(1.02);
+    border-color:rgba(255,106,43,0.5);
+
+    box-shadow:
+        0 30px 75px rgba(0,0,0,0.45),
+        0 0 38px rgba(255,106,43,0.22),
+        inset 0 1px 0 rgba(255,255,255,0.08);
+}
+
+.languages-section.visible .language-item{
+    opacity:1;
+    transform:translateY(0) scale(1);
+}
+
+.languages-section.visible .language-item:nth-child(1){
+    transition-delay:0.08s;
+}
+
+.languages-section.visible .language-item:nth-child(2){
+    transition-delay:0.20s;
+}
+
+.languages-section.visible .language-item:nth-child(3){
+    transition-delay:0.32s;
+}
+
+/* ===============================
+   LANGUAGE FLAG AND TEXT
+   Controls the flag thumbnail size and the language name/proficiency
+   typography inside each language card.
+================================ */
+.language-flag{
+    width:135px;
+    height:85px;
+
+    flex-shrink:0;
+
+    border-radius:14px;
+    overflow:hidden;
+
+    margin-right:20px;
+}
+
+.language-flag img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.language-info h3{
+    color:#F5F5F7;
+    font-size:28px;
+    font-family:'Playfair Display', serif;
+    margin-bottom:4px;
+}
+
+.language-info span{
+    color:#B8B8BE;
+    font-size:14px;
+    font-family:'Plus Jakarta Sans', sans-serif;
+}
+
+/* ===============================
+   MAWHIBA TEXT LABEL
+   Styles the small orange label above the Mawhiba title.
+================================ */
+.mawhiba-text span{
+    color:#FF6A2B;
+    text-transform:uppercase;
+    letter-spacing:3px;
+    font-size:13px;
+    font-family:'Plus Jakarta Sans', sans-serif;
+}
+
+/* ===============================
+   MAWHIBA SECTION LAYOUT
+   Creates the two-column Mawhiba block with image on the left
+   and description/certificate button on the right.
+================================ */
+.mawhiba-section{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+    align-items:center;
+    margin-bottom:140px;
+}
+
+/* ===============================
+   MAWHIBA REVEAL ANIMATION
+   Starts the Mawhiba image and text hidden, then reveals them
+   when JavaScript adds the .visible class.
+================================ */
+.mawhiba-image,
+.mawhiba-text{
+    opacity:0;
+    transition:0.75s ease;
+}
+
+.mawhiba-image{
+    height:420px;
+    border-radius:36px;
+    overflow:hidden;
+    background:#232326;
+    box-shadow:0 30px 80px rgba(0,0,0,0.45);
+    transform:translateX(-45px) rotateY(12deg);
+}
+
+.mawhiba-image img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    background:#ffffff;
+}
+
+.mawhiba-text h2{
+    font-family:'Playfair Display', serif;
+    font-size:44px;
+    line-height:1.15;
+    margin:16px 0 24px;
+    transform:translateX(45px);
+}
+
+.mawhiba-text p{
+    color:#B8B8BE;
+    line-height:1.9;
+    font-family:'Plus Jakarta Sans', sans-serif;
+
+    opacity:0;
+    transform:translateY(35px);
+    transition:
+        opacity 0.75s ease,
+        transform 0.75s ease;
+
+    text-align:justify;
+    text-justify:inter-word;
+    
+}
+
+.mawhiba-section.visible .mawhiba-text p{
+    opacity:1;
+    transform:translateY(0);
+}
+
+.mawhiba-section.visible .mawhiba-image,
+.mawhiba-section.visible .mawhiba-text{
+    opacity:1;
+    transform:translateX(0) rotateY(0);
+}
+
+/* ===============================
+   CERTIFICATE FOLDER TRIGGER
+   Styles the large clickable folder shown inside About Me before
+   opening the certificate archive popup.
+================================ */
+.certificate-archive-section{
+    margin-top:95px;
+    text-align:center;
+}
+
+.certificate-folder-trigger{
+    width:520px;
+    height:310px;
+    margin:auto;
+    position:relative;
+    cursor:pointer;
+    perspective:900px;
+}
+
+/* ===============================
+   FOLDER BACK AND TAB
+   Creates the rear body of the folder and the top-left tab shape.
+================================ */
+.folder-back{
+    position:absolute;
+    inset:35px 0 0;
+    border-radius:28px;
+    overflow:visible;
+
+    background:linear-gradient(145deg,#FF7A18,#FF4D00);
+
+    box-shadow:
+        0 35px 90px rgba(0,0,0,0.55),
+        0 0 45px rgba(255,106,43,0.28);
+}
+
+.folder-back::before{
+    content:"";
+    position:absolute;
+    top:-46px;
+    left:0;
+
+    width:230px;
+    height:70px;
+
+    border-radius:26px 26px 0 0;
+
+    background:linear-gradient(135deg,#FF7A18,#FF4D00);
+
+    z-index:-1;
+}
+
+/* ===============================
+   FOLDER FRONT PANEL
+   Creates the visible front face of the folder, including icon,
+   label, hover opening motion, and caption text.
+================================ */
+.folder-front{
+    position:absolute;
+    inset:70px 0 0;
+
+    border-radius:28px;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:18px;
+
+    background:linear-gradient(145deg,#FF7A18,#FF4D00);
+
+    transform-origin:bottom;
+    transition:0.45s ease;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.25),
+        0 30px 70px rgba(0,0,0,0.45);
+}
+
+.folder-front i{
+    font-size:62px;
+    color:#0E0E10;
+}
+
+.folder-front span{
+    color:#0E0E10;
+    font-family:'Plus Jakarta Sans', sans-serif;
+    font-size:17px;
+    font-weight:800;
+    letter-spacing:2px;
+    text-transform:uppercase;
+}
+
+.certificate-folder-trigger:hover .folder-front{
+    transform:rotateX(-18deg) translateY(8px);
+}
+
+.certificate-folder-caption{
+    margin-top:28px;
+
+    color:#B8B8BE;
+    font-family:'Plus Jakarta Sans', sans-serif;
+    font-size:15px;
+}
+
+
+.timeline-item .certificate-btn{
+    margin-top:12px;
+    padding:8px 13px;
+    font-size:10px;
+    letter-spacing:0.7px;
+    box-shadow:0 10px 24px rgba(255,77,0,0.22);
+}
+
+.timeline-item .certificate-btn i{
+    font-size:12px;
+}

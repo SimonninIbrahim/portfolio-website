@@ -1,0 +1,139 @@
+/* ===============================
+   SECTIONS OVERVIEW LAYER
+   Creates the stacked "Sections" area that introduces the main
+   portfolio categories (About, Experience, Projects, Toolkit, Hobbies).
+================================ */
+.info-layer{
+    position:relative;
+    
+    /* Pull section upward to overlap hero */
+    margin-top:-190px;
+
+    /* ↓↓↓ Less empty space at top */
+    padding:250px 8% 55px;
+
+    z-index:9;
+    background:#18181B;
+    border-radius:80px;
+
+    box-shadow:
+        0 40px 80px rgba(0,0,0,0.65),
+        0 15px 40px rgba(0,0,0,0.45),
+        inset 0 1px 0 rgba(255,255,255,0.03);
+}
+
+/* ===============================
+   SECTION CARD GRID
+   Arranges all overview cards into a five-column layout and
+   controls spacing between them.
+================================ */
+.info-layer-inner{
+    max-width:1500px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:40px;
+}
+
+/* ===============================
+   SECTIONS TITLE CONTAINER
+   Controls the width and spacing of the "Sections" heading
+   displayed above the overview cards.
+================================ */
+.info-section-title{
+    max-width:1500px;
+    margin:0 auto 25px;
+}
+
+/* ===============================
+   OVERVIEW CARD DESIGN
+   Styles the glass cards, icons, titles, descriptions, hover lift,
+   and shared reflection sweep interaction.
+================================ */
+.info-card{
+     background:
+        linear-gradient(145deg, rgba(40, 40, 40, 0.253), rgba(255,255,255,0.035)),
+        rgba(255,255,255,0.04);
+
+    border:1px solid rgba(0, 0, 0, 0.22);
+    border-radius:28px;
+    padding:30px 24px;
+    text-align:center;
+    backdrop-filter: blur(12px);
+    
+
+    transition:0.3s;
+}
+
+.info-card:hover{
+    transform:translateY(-8px);
+    border:1px solid rgba(255,122,24,0.4);
+}
+
+.info-card:hover::after{
+    left:140%;
+}
+
+.info-card i{
+    font-size:28px;
+    color:#FF6A2B;
+    margin-bottom:14px;
+}
+
+.info-card h3{
+    font-family:'Playfair Display', serif;
+    font-size:20px;
+    margin-bottom:8px;
+}
+
+.info-card p{
+    font-family:'Plus Jakarta Sans', sans-serif;
+    font-size:14px;
+    color:#B8B8BE;
+    line-height:1.6;
+}
+
+/* ===============================
+   FLIP REVEAL ANIMATION
+   Cards start hidden and slightly rotated, then flip into place
+   when the section becomes visible in the viewport.
+================================ */
+.flip-card{
+    opacity:0;
+    transform:rotateY(75deg) translateY(35px);
+    transform-origin:center;
+    transition:
+        opacity 0.7s ease,
+        transform 0.7s ease;
+}
+
+/* appears only when info section is visible */
+.info-layer.cards-visible .flip-card{
+    opacity:1;
+    transform:rotateY(0deg) translateY(0);
+}
+
+/* ===============================
+   STAGGERED CARD ENTRANCE
+   Delays each card slightly to create a sequential cascade effect
+   rather than revealing all cards at the same time.
+================================ */
+.info-layer.cards-visible .flip-card:nth-child(1){
+    transition-delay:0.05s;
+}
+
+.info-layer.cards-visible .flip-card:nth-child(2){
+    transition-delay:0.15s;
+}
+
+.info-layer.cards-visible .flip-card:nth-child(3){
+    transition-delay:0.25s;
+}
+
+.info-layer.cards-visible .flip-card:nth-child(4){
+    transition-delay:0.35s;
+}
+
+.info-layer.cards-visible .flip-card:nth-child(5){
+    transition-delay:0.45s;
+}

@@ -1,0 +1,2058 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<!--
+    PAGE HEAD
+    Loads fonts, icons, CSS files, Three.js, and responsive styling.
+-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+    <link rel="stylesheet" href="{% static 'css/popups.css' %}">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/loader.css' %}">
+    <link rel="stylesheet" href="{% static 'css/hero.css' %}">
+    <link rel="stylesheet" href="{% static 'css/sections-overview.css' %}">
+    <link rel="stylesheet" href="{% static 'css/about.css' %}">
+    <link rel="stylesheet" href="{% static 'css/experience.css' %}">
+    <link rel="stylesheet" href="{% static 'css/projects.css' %}">
+    <link rel="stylesheet" href="{% static 'css/toolkit.css' %}">
+    <link rel="stylesheet" href="{% static 'css/hobbies.css' %}">
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+
+
+    <canvas id="spark-canvas"></canvas>
+
+    <script src="{% static 'js/clickSpark.js' %}"></script>
+    
+
+    <script>
+        initClickSpark();
+    </script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+
+    <link rel="icon" href="{% static 'images/Logo.png' %}">
+
+</head>
+
+
+<!--
+    PAGE BODY
+    Contains all visible portfolio sections, popups, overlays, and scripts.
+-->
+<body>
+
+        <!-- Fixed top navbar -->
+        {% include "components/navbar.html" %}
+
+    <!-- Top scroll progress indicator -->
+    <div class="scroll-progress-bar"></div>
+
+    <!-- Right-side section navigation dots -->
+    <div class="side-section-nav">
+        <a href="#home" class="side-nav-item" data-label="Home"></a>
+        <a href="#personal" class="side-nav-item" data-label="About"></a>
+        <a href="#experience" class="side-nav-item" data-label="Experience"></a>
+        <a href="#projects" class="side-nav-item" data-label="Projects"></a>
+        <a href="#toolkit" class="side-nav-item" data-label="Toolkit"></a>
+        <a href="#hobbies" class="side-nav-item" data-label="Hobbies"></a>
+    </div>
+
+    <!-- Loading screen shown before the hero animation starts -->
+    <div id="loading-screen">
+
+        <div class="slash-loader">
+
+            <span style="--i:0"></span>
+            <span style="--i:1"></span>
+            <span style="--i:2"></span>
+            <span style="--i:3"></span>
+            <span style="--i:4"></span>
+            <span style="--i:5"></span>
+            <span style="--i:6"></span>
+            <span style="--i:7"></span>
+            <span style="--i:8"></span>
+            <span style="--i:9"></span>
+            <span style="--i:10"></span>
+            <span style="--i:11"></span>
+
+            <div class="loader-word">EXPLORE</div>
+
+        </div>
+
+    </div>
+
+
+    <!-- HERO SECTION: name, role, quick info, and introduction paragraph -->
+    <section
+        class="hero"
+        id="home"
+        style="background-image:url('{% static 'images/ME4.png' %}');">
+        
+    <div class="hero-content">
+
+        <div class="hero-left">
+            <div class="hero-intro">
+                <span class="intro-hey">Hey,</span>
+                <span class="intro-im">I'm</span>
+            </div>
+            <div class="hero-name">
+                <span id="typed-name"></span>
+                <span class="typing-cursor">|</span>
+            </div>
+
+            <div class="hero-title-role">
+                Computer Scientist
+            </div>
+
+            <div class="hero-quick-info">
+
+                <div class="quick-info-item">
+                    <i class="fa-solid fa-cake-candles"></i>
+                    <span>Date of Birth</span>
+                    <strong>14/02/2001</strong>
+                </div>
+
+                <div class="quick-info-item">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span>Location</span>
+                    <strong>Riyadh + Eastern Province</strong>
+                </div>
+
+                <div class="quick-info-item">
+                    <i class="fa-solid fa-flag"></i>
+                    <span>Nationality</span>
+                    <strong>French</strong>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="hero-right">
+
+            Computer Science graduate from KFUPM with a strong interest in software development, 
+            data science, and analytics. Experienced in building data-driven applications, working with databases, 
+            developing dashboards, and applying analytical tools to solve practical problems through academic 
+            projects and professional exposure. Currently pursuing a Master’s in Data Science & Analytics while 
+            continuously expanding technical skills across diverse areas of computing. Known for quickly learning 
+            new technologies, adapting to different technical challenges, and combining analytical thinking with 
+            creativity through interests in 3D design and digital visualization.
+
+        </div>
+
+    </div>
+
+    </section>
+
+    <!-- SECTIONS OVERVIEW: quick navigation-style cards introducing the portfolio sections -->
+    <section class="info-layer reveal-section" id="sections-overview">
+
+        <div class="info-section-title">
+            <h2 class="layer-title text-reveal">
+                <span class="title-bracket">&lt;</span>
+                Sections
+                <span class="title-bracket">&gt;</span>
+            </h2>
+        </div>
+
+        <div class="info-layer-inner">
+
+            <div class="info-card flip-card">
+                <i class="fa-solid fa-id-card"></i>
+                <h3>About Me</h3>
+                <p>An overview of my education, background, and the qualities that shape me professionally.</p>
+            </div>
+            
+            <div class="info-card flip-card">
+                <i class="fa-solid fa-briefcase"></i>
+                <h3>Experience</h3>
+                <p>A summary of the roles, activities, or opportunities that helped me build my skills.</p>
+            </div>
+
+            <div class="info-card flip-card">
+                <i class="fa-solid fa-folder"></i>
+                <h3>Projects</h3>
+                <p>A selection of work that shows how I apply my knowledge in practical situations.</p>
+            </div>
+
+            <div class="info-card flip-card">
+                <i class="fa-solid fa-screwdriver-wrench"></i>
+                <h3>Toolkit</h3>
+                <p>The tools and technologies I generally use to support creativity and problem-solving.</p>
+            </div>
+
+            <div class="info-card flip-card">
+                <i class="fa-solid fa-gamepad"></i>
+                <h3>Hobbies</h3>
+                <p>Personal interests that reflect energy and a competitive spirit outside of work.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ABOUT ME SECTION: education, languages, Mawhiba, and certificate archive -->
+    <section class="page-layer personal-layer reveal-section" id="personal">
+        <div class="layer-inner">
+            <span class="layer-kicker">Profile</span>
+            
+            <div class="info-section-title">
+                <h2 class="layer-title text-reveal">
+                    <span class="title-bracket">&lt;</span>
+                    About Me
+                    <span class="title-bracket">&gt;</span>
+                </h2>
+            </div>
+        
+
+            <div class="education-showcase">
+
+        <div class="education-timeline">
+            <h3 class="about-subtitle about-animate-title">Education</h3>
+
+            <div class="timeline-item">
+                <h3>Master’s in Data Science & Analytics</h3>
+                <p>King Fahd University of Petroleum and Minerals (KFUPM) | 2025–present</p>
+            </div>
+
+            <div class="timeline-item">
+                <h3>Bachelor’s in Computer Science </h3>
+                <p>King Fahd University of Petroleum and Minerals (KFUPM) | 2020–2025</p>
+                <button class="certificate-btn" data-certificates="Bachelor's Certificate.png">
+                    <i class="fa-solid fa-award"></i>
+                    View Certificate
+                </button>
+            </div>
+
+            <div class="timeline-item">
+                <h3>Secondary School Certificate </h3>
+                <p>King Fahd Secondary School | 2016–2019</p>
+                <button class="certificate-btn" data-certificates="secondary school certificate.png">
+                    <i class="fa-solid fa-award"></i>
+                    View Certificate
+                </button>
+            </div>
+        </div>
+
+        <div class="education-coin-area">
+            <div id="kfupm-coin"></div>
+        </div>
+
+    </div>
+
+            <div class="languages-section">
+        <h3 class="about-subtitle about-animate-title">Languages</h3>
+
+        <div class="language-list">
+
+            <div class="language-item">
+
+                <div class="language-flag">
+                    <img src="{% static 'images/saudi.png' %}" alt="Arabic">
+                </div>
+
+                <div class="language-info">
+                    <h3>Arabic</h3>
+                    <span>Native</span>
+                </div>
+
+            </div>
+
+            <div class="language-item">
+
+                <div class="language-flag">
+                    <img src="{% static 'images/france.png.webp' %}" alt="French">
+                </div>
+
+                <div class="language-info">
+                    <h3>French</h3>
+                    <span>Native</span>
+                </div>
+
+            </div>
+
+            <div class="language-item">
+
+                <div class="language-flag">
+                    <img src="{% static 'images/uk.png.png' %}" alt="English">
+                </div>
+
+                <div class="language-info">
+                    <h3>English</h3>
+                    <span>Fluent</span>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+            </div>
+
+            <div class="mawhiba-section">
+                <div class="mawhiba-image">
+                    <img src="{% static 'images/mawhiba.png' %}" alt="Mawhiba">
+                </div>
+
+                <div class="mawhiba-text">
+                    <span>Academic Recognition</span>
+                    <h2 class="layer-title text-reveal">2x Mawhiba Participant</h2>
+                    <p>
+                        Participated in the Mawhiba Program for two consecutive years, 
+                        gaining exposure to advanced educational opportunities that strengthened analytical, 
+                        research, and problem-solving abilities. Mawhiba is a prestigious national talent development 
+                        program that supports gifted students through specialized enrichment activities, advanced academic 
+                        training, and challenging learning experiences designed to cultivate innovation, leadership, and 
+                        excellence in various fields of study.
+                    </p>
+
+                    <button class="certificate-btn" data-certificates="Mawhiba grade_page-0001.jpg,Mawhiba 2016.jpg,Mawhiba 2017.jpg,King saud engeneering essentials certificate.png,first aid certificate.png">
+                        <i class="fa-solid fa-award"></i>
+                        View Certificates
+                    </button>
+
+                </div>
+            </div>
+
+        <div class="certificate-archive-section">
+
+            <div class="certificate-folder-trigger" id="open-certificate-folder">
+                <div class="folder-back"></div>
+                <div class="folder-front">
+                    <i class="fa-solid fa-folder-open"></i>
+                    <span>Certificates Archive</span>
+                </div>
+            </div>
+
+            <p class="certificate-folder-caption">
+                Online courses, training programs, and additional certificates.
+            </p>
+
+        </div>
+
+        </div>
+        </div>
+    </section>
+
+    <!-- EXPERIENCE SECTION: horizontal carousel of professional experiences -->
+    <section class="page-layer experience-layer reveal-section" id="experience">
+        <div class="layer-inner">
+
+            <span class="layer-kicker">Career Path</span>
+
+            <h2 class="layer-title text-reveal">
+                <span class="title-bracket">&lt;</span>
+                Experience
+                <span class="title-bracket">&gt;</span>
+            </h2>
+
+            <div class="experience-carousel">
+
+                <button class="exp-arrow exp-prev" type="button">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </button>
+
+                <div class="experience-viewport">
+
+                    <div class="experience-track">
+
+                        <div class="experience-card active">
+
+                            <button class="certificate-btn" data-certificates="Part-time Certificate.jpg">
+                                <i class="fa-solid fa-award"></i>
+                                Certificate
+                            </button>
+
+                            <div class="experience-image">
+                                <img src="{% static 'images/KFUPM IT PMO.jpg' %}" alt="">
+                            </div>
+
+                            <div class="experience-content">
+                                <div class="experience-left">
+                                    <h3>Projects coordinator / Documents controller</h3>
+                                    <span class="experience-date">2024 - 2025</span>
+                                    <span class="experience-company">KFUPM IT PMO</span>
+                                </div>
+
+                                <ul class="experience-points">
+                                    <li>Maintained project records and workflow updates using OpenProject and structured tracking tools.</li>
+                                    <li>Tracked project progress across departments and supported status follow-ups on key deliverables.</li>
+                                    <li>Produced dashboards, reports, and presentations using Excel, Tableau, and PowerPoint.</li>
+                                    <li>Assisted with workshops, meetings, and internal operational coordination within the IT PMO.</li>
+                                    <li>Developed practical exposure to IT operations, reporting processes, and team-based project support.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="experience-card">
+                            <div class="experience-image">
+                                <img src="{% static 'images/next role.png' %}" alt="">
+                            </div>
+
+                            <div class="experience-content">
+                                <div class="experience-left">
+                                    <h3>Next Role</h3>
+                                    <span class="experience-date">Coming Soon</span>
+                                    <span class="experience-company">Your Company Here?</span>
+                                </div>
+
+                                <p>
+                                    Currently accepting applications for my next great adventure. 
+                                    This spot could feature the experience I gain working with you. Just saying 😉
+                                </p>
+                            </div>
+                        </div>
+
+
+
+
+                    </div>
+
+                </div>
+
+                <button class="exp-arrow exp-next" type="button">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </button>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- PROJECTS SECTION: portfolio project cards with image sliders and tags -->
+    <section class="page-layer projects-layer reveal-section" id="projects">
+        <div class="layer-inner">
+
+            <span class="layer-kicker">Selected Work</span>
+            
+            <div class="info-section-title">
+                <h2 class="layer-title text-reveal">
+                    <span class="title-bracket">&lt;</span>
+                    Projects
+                    <span class="title-bracket">&gt;</span>
+                </h2>
+            </div>
+
+            <div class="projects-grid">
+
+                <div class="project-card">
+
+                    <div class="project-slider">
+                        <button class="project-arrow project-arrow-left">
+                            <i class="fa-solid fa-chevron-left"></i>
+                        </button>
+
+                        <img class="project-slide active" src="{% static 'images/ME2.png' %}" alt="">
+                        
+
+                        <button class="project-arrow project-arrow-right">
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </button>
+
+                        <div class="project-image-counter">
+                            <span class="current-slide">1</span>
+                            <span>/</span>
+                            <span class="total-slides">2</span>
+                        </div>
+
+                        <button class="project-fullscreen-btn">
+                            <i class="fa-solid fa-expand"></i>
+                        </button>
+                    </div>
+
+                    <div class="project-content">
+
+                        <div class="project-meta">
+                            <span class="project-year">2026</span>
+                            <span class="project-role">Creator & Developer</span>
+                        </div>
+
+                        <h3>Portfolio Website</h3>
+
+                        <p>
+                            Personal portfolio website built with Django, showcasing projects, 
+                            skills, and experience through a polished and responsive design.
+                        </p>
+
+                        <div class="project-tags">
+                            <span>Django</span>
+                            <span>Python</span>
+                            <span>Frontend</span>
+                            <span>Backend</span>
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>JS</span>
+                            <span>Responsive Design</span>
+                            <span>Web Development</span>
+                            <span>Three.js</span>
+                            <span>UI Design</span>
+                            <span>Full-Stack</span>
+                            <span>Portfolio</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="project-card">
+
+                    <div class="project-slider">
+                        <button class="project-arrow project-arrow-left">
+                            <i class="fa-solid fa-chevron-left"></i>
+                        </button>
+
+                        <img class="project-slide active" src="{% static 'images/dashboard-1.jpeg' %}" alt="">
+                        <img class="project-slide" src="{% static 'images/dashboard-2.jpeg' %}" alt="">
+                        <img class="project-slide" src="{% static 'images/dashboard-3.jpeg' %}" alt="">
+                        <img class="project-slide" src="{% static 'images/dashboard-4.jpeg' %}" alt="">
+                        <img class="project-slide" src="{% static 'images/dashboard-5.jpeg' %}" alt="">
+                        <img class="project-slide" src="{% static 'images/dashboard-6.jpeg' %}" alt="">
+
+                        <button class="project-arrow project-arrow-right">
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </button>
+
+                        <div class="project-image-counter">
+                            <span class="current-slide">1</span>
+                            <span>/</span>
+                            <span class="total-slides">5</span>
+                        </div>
+
+                        <button class="project-fullscreen-btn">
+                            <i class="fa-solid fa-expand"></i>
+                        </button>
+
+                    </div>
+
+                    <div class="project-content">
+
+                        <div class="project-meta">
+                            <span class="project-year">2025</span>
+                            <span class="project-role">Full-Stack Developer</span>
+                        </div>
+
+                        <h3>Live Sensor Dashboard for Box Sorting System</h3>
+
+                        <p>
+                            Developed a real-time dashboard with Django to monitor sensor data, 
+                            track box information, and update content instantly.
+                            
+                        </p>
+
+                        <div class="project-tags">
+                            <span>Django</span>
+                            <span>Python</span>
+                            <span>Frontend</span>
+                            <span>Backend</span>
+                            <span>Sensors</span>
+                            <span>Real-Time Data</span>
+                            <span>Automation</span>
+                            <span>Reporting</span>
+                            <span>Data Visualization</span>
+                            <span>Monitoring System</span>
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>JS</span>
+                            
+                            
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="project-card">
+
+                    <div class="project-slider">
+                        <button class="project-arrow project-arrow-left">
+                            <i class="fa-solid fa-chevron-left"></i>
+                        </button>
+
+                        <img class="project-slide active" src="{% static 'images/n8n P1.png' %}" alt="">
+                        <img class="project-slide" src="{% static 'images/n8n P2.png' %}" alt="">
+                        <img class="project-slide" src="{% static 'images/n8n P3.png' %}" alt="">
+                        <img class="project-slide" src="{% static 'images/n8n P5.png' %}" alt="">
+                        <img class="project-slide" src="{% static 'images/n8n P6.png' %}" alt="">
+                        <img class="project-slide" src="{% static 'images/n8n P7.png' %}" alt="">
+
+                        <button class="project-arrow project-arrow-right">
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </button>
+
+                        <div class="project-image-counter">
+                            <span class="current-slide">1</span>
+                            <span>/</span>
+                            <span class="total-slides">2</span>
+                        </div>
+
+                        <button class="project-fullscreen-btn">
+                            <i class="fa-solid fa-expand"></i>
+                        </button>
+
+                    </div>
+
+                    <div class="project-content">
+
+                        <div class="project-meta">
+                            <span class="project-year">2026</span>
+                            <span class="project-role">AI Automation Developer</span>
+                        </div>
+
+                        <h3>AI Job Application Tracker</h3>
+
+                        <p>
+                            Built an AI form workflow that analyzes job posts, 
+                            scores matches, drafts messages, and saves applications to Sheets.
+                            
+                        </p>
+
+                        <div class="project-tags">
+                            <span>n8n</span>
+                            <span>API Integration</span>
+                            <span>Google Gemini</span>
+                            <span>Google Sheets</span>
+                            <span>Workflow Automation</span>
+                            <span>AI Automation</span>
+                            <span>Data Extraction</span>
+                            <span>Prompt Engineering</span>
+                            <span>JavaScript</span>
+                            <span>Business Automation</span>
+                            <span>No-Code Automation</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="project-card">
+
+                    <div class="project-slider">
+                        <button class="project-arrow project-arrow-left">
+                            <i class="fa-solid fa-chevron-left"></i>
+                        </button>
+
+                        <img class="project-slide active" src="{% static 'images/simple game.gif' %}" alt="">
+                        <img class="project-slide" src="{% static 'images/Unity scene.png' %}" alt="">
+                        <img class="project-slide" src="{% static 'images/level design 3.jpeg' %}" alt="">
+                        <img class="project-slide" src="{% static 'images/level design 3.2.jpeg' %}" alt="">
+
+
+                        <button class="project-arrow project-arrow-right">
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </button>
+
+                        <div class="project-image-counter">
+                            <span class="current-slide">1</span>
+                            <span>/</span>
+                            <span class="total-slides">5</span>
+                        </div>
+
+                        <button class="project-fullscreen-btn">
+                            <i class="fa-solid fa-expand"></i>
+                        </button>
+
+                    </div>
+
+                    <div class="project-content">
+
+                        <div class="project-meta">
+                            <span class="project-year">2024</span>
+                            <span class="project-role">Unity Developer & Level Designer</span>
+                        </div>
+
+                        <h3>Unity Game & Environment Design</h3>
+
+                        <p>
+                            Created Unity gameplay, level layouts, and immersive 
+                            3D environments with terrain, trees, models, skybox, and atmosphere.
+                        </p>
+
+                        <div class="project-tags">
+                            <span>Unity</span>
+                            <span>C#</span>
+                            <span>Game Development</span>
+                            <span>Level Design</span>
+                            <span>Environment Design</span>
+                            <span>Terrain Design</span>
+                            <span>Sound Design</span>
+                            <span>Skybox</span>
+                            <span>Lighting</span>
+                            <span>Atmosphere</span>
+                            <span>Collision</span>
+                            <span>NavMesh Agent</span>
+                            <span>3D Assets</span>
+                        </div>
+
+                    </div>
+
+                </div>  
+
+                <div class="project-card">
+
+                    <div class="project-slider">
+                        <button class="project-arrow project-arrow-left">
+                            <i class="fa-solid fa-chevron-left"></i>
+                        </button>
+
+                        <img class="project-slide active" src="{% static 'images/Capsules.png' %}" alt="">
+                        <img class="project-slide" src="{% static 'images/Frame 45.png' %}" alt="">
+                        <img class="project-slide" src="{% static 'images/CUBE EEVEE.png' %}" alt="">
+                        <img class="project-slide" src="{% static 'images/Final Donut EVEE.png' %}" alt="">
+                        <img class="project-slide" src="{% static 'images/Ocean Meh.png' %}" alt="">
+
+
+                        <button class="project-arrow project-arrow-right">
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </button>
+
+                        <div class="project-image-counter">
+                            <span class="current-slide">1</span>
+                            <span>/</span>
+                            <span class="total-slides">5</span>
+                        </div>
+
+                        <button class="project-fullscreen-btn">
+                            <i class="fa-solid fa-expand"></i>
+                        </button>
+
+                    </div>
+
+                    <div class="project-content">
+
+                        <div class="project-meta">
+                            <span class="project-year">2025</span>
+                            <span class="project-role">3D Artist</span>
+                        </div>
+
+                        <h3>3D Artistic Designs</h3>
+
+                        <p>
+                            Created personal 3D projects in Blender, exploring product mockups, 
+                            environments, lighting, and rendering techniques.
+                        </p>
+
+                        <div class="project-tags">
+                            <span>Blender</span>
+                            <span>3D Modeling</span>
+                            <span>3D Art</span>
+                            <span>Rendering</span>
+                            <span>Lighting</span>
+                            <span>Materials</span>
+                            <span>Product Mockups</span>
+                            <span>Visualization</span>
+                            <span>Environment Design</span>
+                            <span>Simulation</span>
+                            <span>Bump Maps</span>
+                            <span>UV Editing</span>
+                            <span>Sculpting</span>
+                            <span>HDRIs</span>
+                            <span>Modifiers</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="project-card">
+
+                    <div class="project-slider">
+                        <button class="project-arrow project-arrow-left">
+                            <i class="fa-solid fa-chevron-left"></i>
+                        </button>
+
+                        <img class="project-slide active" src="{% static 'images/Flight SQL P1.png' %}" alt="">
+                        <img class="project-slide" src="{% static 'images/Flight SQL P2.png' %}" alt="">
+                        <img class="project-slide" src="{% static 'images/Flight SQL 3.jpeg' %}" alt="">
+                        <img class="project-slide" src="{% static 'images/Flight SQL P4.png' %}" alt="">
+                        <img class="project-slide" src="{% static 'images/Flight SQL P5.png' %}" alt="">
+                        <img class="project-slide" src="{% static 'images/Flight SQL P6.jpeg' %}" alt="">
+
+                        <button class="project-arrow project-arrow-right">
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </button>
+
+                        <div class="project-image-counter">
+                            <span class="current-slide">1</span>
+                            <span>/</span>
+                            <span class="total-slides">2</span>
+                        </div>
+
+                        <button class="project-fullscreen-btn">
+                            <i class="fa-solid fa-expand"></i>
+                        </button>
+
+                    </div>
+
+                    <div class="project-content">
+
+                        <div class="project-meta">
+                            <span class="project-year">2023</span>
+                            <span class="project-role">Database Developer</span>
+                        </div>
+
+                        <h3>Flight Booking Database System</h3>
+
+                        <p>
+                            Built a PHP and MySQL flight booking system with search, 
+                            ticket booking, payments, joins, and prepared SQL statements. 
+                            
+                        </p>
+
+                        <div class="project-tags">
+                            <span>PHP</span>
+                            <span>MySQL</span>
+                            <span>SQL</span>
+                            <span>Database Design</span>
+                            <span>ERD</span>
+                            <span>CRUD</span>
+                            <span>Prepared Statements</span>
+                            <span>SQL Joins</span>
+                            <span>Flight Booking</span>
+                            <span>Backend Development</span>
+                            <span>phpMyAdmin</span>
+                            <span>XAMPP</span>
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="project-card">
+
+                    <div class="project-slider">
+                        <button class="project-arrow project-arrow-left">
+                            <i class="fa-solid fa-chevron-left"></i>
+                        </button>
+
+                        <img class="project-slide active" src="{% static 'images/Caldera P1.png' %}" alt="">
+                        <img class="project-slide" src="{% static 'images/Caldera P2.png' %}" alt="">
+                        <img class="project-slide" src="{% static 'images/Caldera P3.png' %}" alt="">
+
+                        <button class="project-arrow project-arrow-right">
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </button>
+
+                        <div class="project-image-counter">
+                            <span class="current-slide">1</span>
+                            <span>/</span>
+                            <span class="total-slides">2</span>
+                        </div>
+
+                        <button class="project-fullscreen-btn">
+                            <i class="fa-solid fa-expand"></i>
+                        </button>
+
+                    </div>
+
+                    <div class="project-content">
+
+                        <div class="project-meta">
+                            <span class="project-year">2024</span>
+                            <span class="project-role">Cybersecurity Analyst</span>
+                        </div>
+
+                        <h3>SSH Attack Simulation & Honeypot Monitoring</h3>
+
+                        <p>
+                            Simulated SSH attacks, compared real and honeypot services, 
+                            and analyzed security logs using SIEM dashboards. 
+                            
+                        </p>
+
+                        <div class="project-tags">
+                            <span>Cybersecurity</span>
+                            <span>Information Security</span>
+                            <span>SSH</span>
+                            <span>Honeypot</span>
+                            <span>Cowrie</span>
+                            <span>SIEM</span>
+                            <span>ELK Stack</span>
+                            <span>Kibana</span>
+                            <span>Log Analysis</span>
+                            <span>MITRE ATT&CK</span>
+                            <span>Caldera</span>
+                            <span>Kali Linux</span>
+                            <span>Metasploit</span>
+                            <span>Threat Simulation</span>
+                            <span>Security Monitoring</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="project-card">
+
+                    <div class="project-slider">
+                        <button class="project-arrow project-arrow-left">
+                            <i class="fa-solid fa-chevron-left"></i>
+                        </button>
+
+                        <img class="project-slide active" src="{% static 'images/RER Box.png' %}" alt="">
+                        <img class="project-slide" src="{% static 'images/RER Box UP.png' %}" alt="">
+                        <img class="project-slide" src="{% static 'images/Box 2.png' %}" alt="">
+                        <img class="project-slide" src="{% static 'images/Prototype.png' %}" alt="">
+                        <img class="project-slide" src="{% static 'images/Prototype1.png' %}" alt="">
+                        <img class="project-slide" src="{% static 'images/Prototype2.png' %}" alt="">
+
+                        <button class="project-arrow project-arrow-right">
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </button>
+
+                        <div class="project-image-counter">
+                            <span class="current-slide">1</span>
+                            <span>/</span>
+                            <span class="total-slides">6</span>
+                        </div>
+
+                        <button class="project-fullscreen-btn">
+                            <i class="fa-solid fa-expand"></i>
+                        </button>
+
+                    </div>
+
+                    <div class="project-content">
+
+                        <div class="project-meta">
+                            <span class="project-year">2026</span>
+                            <span class="project-role">3D Designer</span>
+                        </div>
+
+                        <h3>3D Designs for Annual Company Report</h3>
+
+                        <p>
+                            Designed and visualized 3D concepts in Blender, 
+                            helping transform ideas into engaging visuals for an annual company report.
+                        </p>
+
+                        <div class="project-tags">
+                            <span>Blender</span>
+                            <span>3D Modeling</span>
+                            <span>3D Design</span>
+                            <span>Rendering</span>
+                            <span>Concept Development</span>
+                            <span>Corporate Design</span>
+                            <span>Visualization</span>
+                            <span>Art Direction</span>
+                            <span>Freelancer</span>
+                        </div>
+
+                    </div>
+
+                </div> 
+
+                <div class="project-card">
+
+                    <div class="project-slider">
+                        <button class="project-arrow project-arrow-left">
+                            <i class="fa-solid fa-chevron-left"></i>
+                        </button>
+
+                        <img class="project-slide active" src="{% static 'images/MoviesR11.jpeg' %}" alt="">
+                        <img class="project-slide" src="{% static 'images/MoviesR12.jpeg' %}" alt="">
+                        <img class="project-slide" src="{% static 'images/MoviesR13.jpeg' %}" alt="">
+                        <img class="project-slide" src="{% static 'images/MoviesR3.jpeg' %}" alt="">
+                        <img class="project-slide" src="{% static 'images/MoviesR1.jpeg' %}" alt="">
+
+                        <button class="project-arrow project-arrow-right">
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </button>
+
+                        <div class="project-image-counter">
+                            <span class="current-slide">1</span>
+                            <span>/</span>
+                            <span class="total-slides">2</span>
+                        </div>
+
+                        <button class="project-fullscreen-btn">
+                            <i class="fa-solid fa-expand"></i>
+                        </button>
+
+                    </div>
+
+                    <div class="project-content">
+
+                        <div class="project-meta">
+                            <span class="project-year">2024</span>
+                            <span class="project-role">Technical Leader</span>
+                        </div>
+
+                        <h3>Movie Recommendation Website</h3>
+
+                        <p>
+                            Served as technical lead, aligning the MIS and development teams 
+                            while building a basic Django backend to display and search movie data. 
+                            
+                        </p>
+
+                        <div class="project-tags">
+                            <span>Technical Leadership</span>
+                            <span>Team Coordination</span>
+                            <span>MIS Collaboration</span>
+                            <span>Django</span>
+                            <span>Python</span>
+                            <span>Database</span>
+                            <span>Search Engine</span>
+                            <span>Backend</span>
+                        </div>
+
+                    </div>
+
+                </div>                
+                
+                <div class="project-card">
+
+                    <div class="project-slider">
+                        <button class="project-arrow project-arrow-left">
+                            <i class="fa-solid fa-chevron-left"></i>
+                        </button>
+
+                        <img class="project-slide active" src="{% static 'images/P1 ICS415.png' %}" alt="">
+                        <img class="project-slide" src="{% static 'images/P2 ICS415.gif' %}" alt="">
+                        <img class="project-slide" src="{% static 'images/P3 ICS415.gif' %}" alt="">
+                        <img class="project-slide" src="{% static 'images/P4 ICS415.gif' %}" alt="">
+
+
+                        <button class="project-arrow project-arrow-right">
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </button>
+
+                        <div class="project-image-counter">
+                            <span class="current-slide">1</span>
+                            <span>/</span>
+                            <span class="total-slides">5</span>
+                        </div>
+
+                        <button class="project-fullscreen-btn">
+                            <i class="fa-solid fa-expand"></i>
+                        </button>
+
+                    </div>
+
+                    <div class="project-content">
+
+                        <div class="project-meta">
+                            <span class="project-year">2024</span>
+                            <span class="project-role">Graphics Programmer</span>
+                        </div>
+
+                        <h3>Computer Graphics Projects</h3>
+
+                        <p>
+                            Built graphics projects covering ray-traced scenes, 
+                            Bézier curves, texture animation, and OpenGL voxel-style navigation.
+                        </p>
+
+                        <div class="project-tags">
+                            <span>Computer Graphics</span>
+                            <span>OpenGL</span>
+                            <span>C++</span>
+                            <span>GLFW</span>
+                            <span>GLAD</span>
+                            <span>JavaScript</span>
+                            <span>Canvas</span>
+                            <span>Ray Tracing</span>
+                            <span>Bézier Curves</span>
+                            <span>Texture Mapping</span>
+                            <span>Shaders</span>
+                            <span>Camera Movement</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="project-card">
+
+                    <div class="project-slider">
+                        <button class="project-arrow project-arrow-left">
+                            <i class="fa-solid fa-chevron-left"></i>
+                        </button>
+
+                        <img class="project-slide active" src="{% static 'images/ML Project 4.png' %}" alt="">
+                        <img class="project-slide" src="{% static 'images/ML Project 3.png' %}" alt="">
+                        <img class="project-slide" src="{% static 'images/ML Project 1.png' %}" alt="">
+                        <img class="project-slide" src="{% static 'images/ML Project 2.png' %}" alt="">
+                        <img class="project-slide" src="{% static 'images/ML Project 5.png' %}" alt="">
+                        <img class="project-slide" src="{% static 'images/ML Project 6.png' %}" alt="">
+
+                        <button class="project-arrow project-arrow-right">
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </button>
+
+                        <div class="project-image-counter">
+                            <span class="current-slide">1</span>
+                            <span>/</span>
+                            <span class="total-slides">5</span>
+                        </div>
+
+                        <button class="project-fullscreen-btn">
+                            <i class="fa-solid fa-expand"></i>
+                        </button>
+
+                    </div>
+
+                    <div class="project-content">
+
+                        <div class="project-meta">
+                            <span class="project-year">2026</span>
+                            <span class="project-role">Data Scientist</span>
+                        </div>
+
+                        <h3>Student Performance Prediction</h3>
+
+                        <p>
+                            Machine learning model predicting student pass/fail 
+                            outcomes using academic data and classification metrics.
+                            
+                        </p>
+
+                        <div class="project-tags">
+                            <span>Python</span>
+                            <span>Machine Learning</span>
+                            <span>Data Science</span>
+                            <span>Classification</span>
+                            <span>Logistic Regression</span>
+                            <span>Decision Tree</span>
+                            <span>Pandas</span>
+                            <span>Scikit-learn</span>
+                            <span>Data Analysis</span>
+                            <span>Model Evaluation</span>
+                            <span>Confusion Matrix</span>
+                            <span>Predictive Analytics</span>
+                            
+                        </div>
+
+                    </div>
+
+                </div>    
+
+                <div class="project-card">
+
+                    <div class="project-slider">
+                        <button class="project-arrow project-arrow-left">
+                            <i class="fa-solid fa-chevron-left"></i>
+                        </button>
+
+                        <img class="project-slide active" src="{% static 'images/blackhole.jpeg' %}" alt="">
+                        <img class="project-slide" src="{% static 'images/StoryBoard.jpeg' %}" alt="">
+                        <img class="project-slide" src="{% static 'images/maliketh.jpeg' %}" alt="">
+                        <img class="project-slide" src="{% static 'images/godfrey.jpeg' %}" alt="">
+                        <img class="project-slide" src="{% static 'images/laura.jpeg' %}" alt="">
+                        <img class="project-slide" src="{% static 'images/malenia.jpeg' %}" alt="">
+                        <img class="project-slide" src="{% static 'images/Rennalla.jpeg' %}" alt="">
+                        <img class="project-slide" src="{% static 'images/ranni.jpeg' %}" alt="">
+                        <img class="project-slide" src="{% static 'images/melina.jpeg' %}" alt="">
+                        <img class="project-slide" src="{% static 'images/shark.jpeg' %}" alt="">
+                        <img class="project-slide" src="{% static 'images/arcticSky.jpeg' %}" alt="">
+                        <img class="project-slide" src="{% static 'images/Mushroom.jpeg' %}" alt="">
+
+                        <button class="project-arrow project-arrow-right">
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </button>
+
+                        <div class="project-image-counter">
+                            <span class="current-slide">1</span>
+                            <span>/</span>
+                            <span class="total-slides">12</span>
+                        </div>
+
+                        <button class="project-fullscreen-btn">
+                            <i class="fa-solid fa-expand"></i>
+                        </button>
+
+                    </div>
+
+                    <div class="project-content">
+
+                        <div class="project-meta">
+                            <span class="project-year">2024</span>
+                            <span class="project-role">Digital Sketch Artist</span>
+                        </div>
+
+                        <h3>Personal Sketches & Digital Concepts</h3>
+
+                        <p>
+                            Created digital sketches and illustrations in Photoshop, 
+                            practicing drawing fundamentals and exploring diverse visual styles.
+                        </p>
+                            
+
+                        <div class="project-tags">
+                            <span>Adobe Photoshop</span>
+                            <span>Sketching</span>
+                            <span>Concept Art</span>
+                            <span>Visual Development</span>
+                            <span>Illustration</span>
+                            <span>Digital Art</span>
+                            <span>Drawing</span>
+                            <span>Digital Painting</span>
+                            <span>Visual Arts</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="project-card">
+
+                    <div class="project-slider">
+                        <button class="project-arrow project-arrow-left">
+                            <i class="fa-solid fa-chevron-left"></i>
+                        </button>
+
+                        <img class="project-slide active" src="{% static 'images/Java P1.png' %}" alt="">
+                        <img class="project-slide" src="{% static 'images/Java P2.png' %}" alt="">
+                        <img class="project-slide" src="{% static 'images/Java P3.png' %}" alt="">
+                        <img class="project-slide" src="{% static 'images/Java P4.png' %}" alt="">
+                        <img class="project-slide" src="{% static 'images/Java P5.png' %}" alt="">
+
+                        <button class="project-arrow project-arrow-right">
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </button>
+
+                        <div class="project-image-counter">
+                            <span class="current-slide">1</span>
+                            <span>/</span>
+                            <span class="total-slides">5</span>
+                        </div>
+
+                        <button class="project-fullscreen-btn">
+                            <i class="fa-solid fa-expand"></i>
+                        </button>
+
+                    </div>
+
+                    <div class="project-content">
+
+                        <div class="project-meta">
+                            <span class="project-year">2022</span>
+                            <span class="project-role">Java Developer</span>
+                        </div>
+
+                        <h3>Java Dictionary Management System</h3>
+
+                        <p>
+                            Java console dictionary app with CSV storage, word search, 
+                            filters, editing, saving, and smart suggestions.
+                            
+                        </p>
+
+                        <div class="project-tags">
+                            <span>Java</span>
+                            <span>OOP</span>
+                            <span>HashMap</span>
+                            <span>ArrayList</span>
+                            <span>CSV</span>
+                            <span>File Handling</span>
+                            <span>Search</span>
+                            <span>Input Validation</span>
+                            <span>Data Management</span>
+                            <span>Suggestions</span>
+                            
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="project-card">
+
+                    <div class="project-slider">
+                        <button class="project-arrow project-arrow-left">
+                            <i class="fa-solid fa-chevron-left"></i>
+                        </button>
+
+                        <img class="project-slide active" src="{% static 'images/Coming Soon 1.png' %}" alt="">
+                        
+
+                        <button class="project-arrow project-arrow-right">
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </button>
+
+                        <div class="project-image-counter">
+                            <span class="current-slide">1</span>
+                            <span>/</span>
+                            <span class="total-slides">2</span>
+                        </div>
+
+                        <button class="project-fullscreen-btn">
+                            <i class="fa-solid fa-expand"></i>
+                        </button>
+                    </div>
+
+                    <div class="project-content">
+
+                        <div class="project-meta">
+                            <span class="project-year">Coming Soon</span>
+                            <span class="project-role">Game Designer</span>
+                        </div>
+
+                        <h3>Online Co-op Game</h3>
+
+                        <p>
+                            Designing an online co-op game planned for public release, 
+                            focused on teamwork, exploration, tension, and shared player moments.
+                        </p>
+
+                        <div class="project-tags">
+                            <span>Game Design</span>
+                            <span>Online Multiplayer</span>
+                            <span>Unity</span>
+                            <span>Gameplay Design</span>
+                            <span>Level Design</span>
+                            <span>Game Mechanics</span>
+                            <span>Player Experience</span>
+                            <span>Interactive Systems</span>
+                            <span>Exploration</span>
+                            <span>Indie Game</span>
+                        
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- TOOLKIT SECTION: software, programming languages, frameworks, and tooltips -->
+    <section class="page-layer toolkit-layer reveal-section" id="toolkit">
+        <div class="layer-inner">
+
+            <span class="layer-kicker">Technical Stack</span>
+            <div class="info-section-title">
+                <h2 class="layer-title text-reveal">
+                    <span class="title-bracket">&lt;</span>
+                    Toolkit
+                    <span class="title-bracket">&gt;</span>
+                </h2>
+            </div>
+
+            <div class="toolkit-category">
+                <h3>Software</h3>
+
+                <div class="tool-grid">
+                    <div class="tool-card" data-tooltip="Blender is a 3D creation software used for modeling, rendering, animation, and visual design.">
+                        <img src="{% static 'images/Blender logo.png' %}" alt="Blender">
+                        <span>Blender</span>
+                    </div>
+
+                    <div class="tool-card" data-tooltip="A game development platform used to create interactive games, simulations, and virtual experiences.">
+                        <img src="{% static 'images/unity logo.webp' %}" alt="Unity">
+                        <span>Unity</span>
+                    </div>
+
+                    <div class="tool-card" data-tooltip="A digital design and image editing software used for creating artwork, illustrations, and photo manipulation.">
+                        <img src="{% static 'images/Photoshop logo.png' %}" alt="Photoshop">
+                        <span>Photoshop</span>
+                    </div>
+
+                    <div class="tool-card" data-tooltip="A platform for storing, managing, and collaborating on software projects and code.">
+                        <img src="{% static 'images/git logo.png' %}" alt="git">
+                        <span>Github</span>
+                    </div>
+
+                    <div class="tool-card" data-tooltip="A lightweight code editor used for writing, debugging, and managing software projects.">
+                        <img src="{% static 'images/VS logo.png' %}" alt="VS Code">
+                        <span>VS Code</span>
+                    </div>
+
+                    <div class="tool-card" data-tooltip="A video editing software used to create, edit, and produce professional video content.">
+                        <img src="{% static 'images/sony vegas logo.png' %}" alt="sony vegas">
+                        <span>Sony Vegas 11</span>
+                    </div>
+                    
+                    <div class="tool-card" data-tooltip="An integrated development environment (IDE) designed primarily for Java software development.">
+                        <img src="{% static 'images/IntelliJ IDEA logo.png' %}" alt="IntelliJ">
+                        <span>IntelliJ IDEA</span>
+                    </div>
+
+                    <div class="tool-card" data-tooltip="A professional IDE designed specifically for Python programming and development.">
+                        <img src="{% static 'images/PyCharm logo.png' %}" alt="PyCharm">
+                        <span>PyCharm</span>
+                    </div>
+
+                    <div class="tool-card" data-tooltip="An interactive environment used for writing code, analyzing data, and documenting results.">
+                        <img src="{% static 'images/Jupyter logo.png' %}" alt="Jupyter">
+                        <span>Jupyter Notebook</span>
+                    </div>
+
+                    <div class="tool-card" data-tooltip="A document creation and editing tool used for reports, letters, and professional documentation.">
+                        <img src="{% static 'images/Microsoft Office Word logo.png' %}" alt="Word">
+                        <span>Microsoft Office Word</span>
+                    </div>
+
+                    <div class="tool-card" data-tooltip="A presentation software used to create visual slideshows for meetings and presentations.">
+                        <img src="{% static 'images/Microsoft PowerPoint logo.png' %}" alt="PowerPoint">
+                        <span>Microsoft PowerPoint</span>
+                    </div>
+
+                    <div class="tool-card" data-tooltip="A spreadsheet application used for organizing, analyzing, and visualizing data.">
+                        <img src="{% static 'images/Microsoft Office Excel logo.png' %}" alt="Microsoft Office Excel">
+                        <span>Microsoft Office Excel</span>
+                    </div>
+
+                    <div class="tool-card" data-tooltip="A project management application used for scheduling tasks and tracking project progress.">
+                        <img src="{% static 'images/Microsoft Project logo.png' %}" alt="Microsoft Project">
+                        <span>Microsoft Project</span>
+                    </div>
+
+                    <div class="tool-card" data-tooltip="A data visualization platform used to create interactive dashboards and business reports.">
+                        <img src="{% static 'images/tableau logo.png' %}" alt="tableau">
+                        <span>Tableau</span>
+                    </div>
+
+                    <div class="tool-card" data-tooltip="A collaboration platform for communication, meetings, file sharing, and teamwork.">
+                        <img src="{% static 'images/Microsoft Teams logo.png' %}" alt="Microsoft Teams">
+                        <span>Microsoft Teams</span>
+                    </div>
+
+                    <div class="tool-card" data-tooltip="A communication platform that supports text, voice, and video collaboration.">
+                        <img src="{% static 'images/Discord logo.png' %}" alt="Discord">
+                        <span>Discord</span>
+                    </div>
+
+                    <div class="tool-card" data-tooltip="A video conferencing platform used for online meetings, presentations, and remote collaboration.">
+                        <img src="{% static 'images/zoom meetings logo.webp' %}" alt="zoom meetings">
+                        <span>Zoom Meetings</span>
+                    </div>
+
+                    <div class="tool-card" data-tooltip="A graphic design platform used to create presentations, social media content, and marketing materials.">
+                        <img src="{% static 'images/Canva logo.png' %}" alt="Canva">
+                        <span>Canva</span>
+                    </div>
+
+                    <div class="tool-card" data-tooltip="A collaborative design tool used for creating user interfaces, prototypes, and digital product designs.">
+                        <img src="{% static 'images/Figma logo.png' %}" alt="Figma">
+                        <span>Figma</span>
+                    </div>
+
+                    <div class="tool-card" data-tooltip="A Linux-based operating system widely used for programming, networking, and server management.">
+                        <img src="{% static 'images/Ubuntu logo.png' %}" alt="Ubuntu">
+                        <span>Ubuntu</span>
+                    </div>
+
+                    <div class="tool-card" data-tooltip="A video conferencing platform used for online meetings, classes, and team collaboration.">
+                        <img src="{% static 'images/Google Meet logo.png' %}" alt="Google Meet">
+                        <span>Google Meet</span>
+                    </div>
+
+                    <div class="tool-card" data-tooltip="A cloud-based spreadsheet application used for organizing data and performing calculations.">
+                        <img src="{% static 'images/Google Sheets logo.png' %}" alt="Google Sheets">
+                        <span>Google Sheets</span>
+                    </div>
+
+                    <div class="tool-card" data-tooltip="An educational simulator used to write, run, and debug MIPS assembly language programs.">
+                        <img src="{% static 'images/Mars MIPS Simulator logo.png' %}" alt="MARS MIPS">
+                        <span>Mars MIPS</span>
+                    </div>
+
+                    <div class="tool-card" data-tooltip="A diagramming tool used to create flowcharts, UML diagrams, and system designs.">
+                        <img src="{% static 'images/Draw.io logo.png' %}" alt="Draw.io">
+                        <span>Draw.io</span>
+                    </div>
+
+                    <div class="tool-card" data-tooltip="An online application for creating diagrams, flowcharts, and software architecture designs.">
+                        <img src="{% static 'images/lucidchart logo.png' %}" alt="Lucidchart">
+                        <span>Lucidchart</span>
+                    </div>
+
+                    <div class="tool-card" data-tooltip="An open-source project management tool used for planning, tracking, and organizing team projects.">
+                        <img src="{% static 'images/OpenProject logo.png' %}" alt="OpenProject">
+                        <span>OpenProject</span>
+                    </div>
+
+                    <div class="tool-card" data-tooltip="A Python distribution that includes many libraries and tools for data science and machine learning.">
+                        <img src="{% static 'images/Anaconda logo.png' %}" alt="Anaconda">
+                        <span>Anaconda</span>
+                    </div>
+
+                    <div class="tool-card" data-tooltip="A virtualization program that allows multiple operating systems to run on one computer.">
+                        <img src="{% static 'images/VirtualBox logo.png' %}" alt="VirtualBox">
+                        <span>VirtualBox</span>
+                    </div>
+
+                    <div class="tool-card" data-tooltip="A compact single-board computer used for programming, robotics, and IoT projects.">
+                        <img src="{% static 'images/Raspberry Pi Logo.png' %}" alt="Raspberry Pi">
+                        <span>Raspberry Pi</span>
+                    </div>
+
+                    <div class="tool-card" data-tooltip="A free audio editing program used for recording and modifying sound files.">
+                        <img src="{% static 'images/Audacity Logo.png' %}" alt="Audacity">
+                        <span>Audacity</span>
+                    </div>
+
+                    <div class="tool-card" data-tooltip="A network analysis tool used to capture and inspect network traffic.">
+                        <img src="{% static 'images/Wireshark logo.png' %}" alt="Wireshark">
+                        <span>Wireshark</span>
+                    </div>
+
+                    <div class="tool-card" data-tooltip="A robotics platform that lets users build and program educational robots.">
+                        <img src="{% static 'images/ev3 logo.png' %}" alt="ev3">
+                        <span>EV3</span>
+                    </div>
+
+                    <div class="tool-card" data-tooltip="Workflow automation platform used to connect forms, AI tools, APIs, and Google Sheets into automated systems.">
+                        <img src="{% static 'images/n8n logo.webp' %}" alt="n8n">
+                        <span>n8n</span>
+                    </div>
+
+                    <div class="tool-card" data-tooltip="An automated adversary emulation platform used to simulate cyberattacks and test security detection capabilities.">
+                        <img src="{% static 'images/caldera logo.png' %}" alt="MITRE Caldera">
+                        <span>MITRE Caldera</span>
+                    </div>
+
+                    <div class="tool-card" data-tooltip="A local development environment used to run Apache, PHP, MySQL/MariaDB, and phpMyAdmin on a personal computer.">
+                        <img src="{% static 'images/xampp logo.webp' %}" alt="XAMPP">
+                        <span>XAMPP</span>
+                    </div>
+
+                    <div class="tool-card" data-tooltip="A browser-based database management tool used to create databases, tables, relationships, and run SQL queries.">
+                        <img src="{% static 'images/PhpMyAdmin logo.png' %}" alt="phpMyAdmin">
+                        <span>phpMyAdmin</span>
+                    </div>
+
+                    <div class="tool-card" data-tooltip="A local web server used to run and display PHP pages through localhost.">
+                        <img src="{% static 'images/apache logo.png' %}" alt="Apache">
+                        <span>Apache</span>
+                    </div>
+
+                    <div class="tool-card" data-tooltip="A relational database management system used to store, organize, query, and manage structured data.">
+                        <img src="{% static 'images/mysql logo.png' %}" alt="MySQL">
+                        <span>MySQL</span>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="toolkit-category">
+                <h3>Programming Languages</h3>
+
+                <div class="tool-grid">
+                    <div class="tool-card" data-tooltip="A programming language commonly used for web development, automation, data analysis, and AI.">
+                        <img src="{% static 'images/Python logo.png' %}" alt="Python">
+                        <span>Python</span>
+                    </div>
+
+                    <div class="tool-card" data-tooltip="A widely used programming language known for building scalable applications and enterprise software.">
+                        <img src="{% static 'images/java logo.png' %}" alt="Java">
+                        <span>Java</span>
+                    </div>
+
+                    <div class="tool-card" data-tooltip="A high-performance programming language commonly used for systems, games, and software applications.">
+                        <img src="{% static 'images/c++ logo.png' %}" alt="C++">
+                        <span>C++</span>
+                    </div>
+
+                    <div class="tool-card" data-tooltip="A programming language developed by Microsoft for desktop applications, games, and enterprise software.">
+                        <img src="{% static 'images/C sharp logo.png' %}" alt="C sharp">
+                        <span>C#</span>
+                    </div>
+
+                    <div class="tool-card" data-tooltip="The standard language used to structure and organize content on web pages.">
+                        <img src="{% static 'images/html logo.png' %}" alt="HTML">
+                        <span>HTML</span>
+                    </div>
+
+                    <div class="tool-card" data-tooltip="A styling language used to control the appearance and layout of web pages.">
+                        <img src="{% static 'images/css logo.png' %}" alt="CSS">
+                        <span>CSS</span>
+                    </div>
+
+                    <div class="tool-card" data-tooltip="A programming language that adds interactivity and dynamic behavior to websites.">
+                        <img src="{% static 'images/js logo.png' %}" alt="JavaScript">
+                        <span>JavaScript</span>
+                    </div>
+
+                    <div class="tool-card" data-tooltip="A programming language specialized in statistics, data analysis, and data visualization.">
+                        <img src="{% static 'images/R logo.png' %}" alt="R">
+                        <span>R</span>
+                    </div>
+
+                    <div class="tool-card" data-tooltip="A language used to store, manage, and retrieve information from databases.">
+                        <img src="{% static 'images/sql logo.png' %}" alt="sql">
+                        <span>SQL</span>
+                    </div>
+
+                    <div class="tool-card" data-tooltip="A low-level programming language that interacts directly with computer hardware and processors.">
+                        <img src="{% static 'images/assembly logo.png' %}" alt="assembly">
+                        <span>Assembly</span>
+                    </div>
+
+                    <div class="tool-card" data-tooltip="A scripting and automation language used for managing systems and automating administrative tasks.">
+                        <img src="{% static 'images/PowerShell logo.png' %}" alt="PowerShell">
+                        <span>PowerShell</span>
+                    </div>
+
+                    <div class="tool-card" data-tooltip="A logic programming language mainly used for artificial intelligence and solving rule-based problems.">
+                        <img src="{% static 'images/Prolog logo.png' %}" alt="Prolog">
+                        <span>Prolog</span>
+                    </div>
+
+                    <div class="tool-card" data-tooltip="A high-level language known for its simple syntax and its use in web development.">
+                        <img src="{% static 'images/Ruby logo.png' %}" alt="Ruby">
+                        <span>Ruby</span>
+                    </div>
+
+                    <div class="tool-card" data-tooltip="A modern Lisp-based programming language often used for education and research.">
+                        <img src="{% static 'images/Racket logo.png' %}" alt="Racket">
+                        <span>Racket</span>
+                    </div>
+
+                    <div class="tool-card" data-tooltip="A command-line shell and scripting language used to run commands, automate tasks, and manage Linux-based systems.">
+                        <img src="{% static 'images/Bash Logo.png' %}" alt="Bash">
+                        <span>Bash</span>
+                    </div>
+
+                    <div class="tool-card" data-tooltip="A server-side scripting language commonly used to build dynamic websites and connect web pages with databases.">
+                        <img src="{% static 'images/PHP logo.png' %}" alt="PHP">
+                        <span>PHP</span>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="toolkit-category">
+                <h3>Frameworks & Libraries</h3>
+
+                <div class="tool-grid">
+                    <div class="tool-card" data-tooltip="A Python web framework used to build secure, scalable, and data-driven web applications.">
+                        <img src="{% static 'images/django logo.webp' %}" alt="Django">
+                        <span>Django</span>
+                    </div>
+
+                    <div class="tool-card" data-tooltip="A framework used to develop cross-platform mobile, web, and desktop applications from a single codebase.">
+                        <img src="{% static 'images/Flutter logo.webp' %}" alt="Flutter">
+                        <span>Flutter</span>
+                    </div>
+
+                    <div class="tool-card" data-tooltip="A Python library that provides efficient tools for numerical computing and mathematical operations.">
+                        <img src="{% static 'images/numpy logo.png' %}" alt="numpy">
+                        <span>Numpy</span>
+                    </div>
+
+                    <div class="tool-card" data-tooltip="A Python library used for organizing, cleaning, and analyzing structured data.">
+                        <img src="{% static 'images/pandas logo.png' %}" alt="pandas">
+                        <span>Pandas</span>
+                    </div>
+
+                    <div class="tool-card" data-tooltip="A Python library used to create charts, graphs, and data visualizations.">
+                        <img src="{% static 'images/Matplotlib logo.png' %}" alt="Matplotlib">
+                        <span>Matplotlib</span>
+                    </div>
+
+                    <div class="tool-card" data-tooltip="A machine learning library for Python that provides tools for data analysis, prediction, and AI models.">
+                        <img src="{% static 'images/Scikit learn logo.png' %}" alt="Scikit learn">
+                        <span>Scikit_learn</span>
+                    </div>
+
+                    <div class="tool-card" data-tooltip="A lightweight database system used to store and manage application data without a separate server.">
+                        <img src="{% static 'images/sqlite logo.webp' %}" alt="sqlite">
+                        <span>SQLite</span>
+                    </div>
+
+                    <div class="tool-card" data-tooltip="A graphics library used for developing 2D and 3D applications and games.">
+                        <img src="{% static 'images/opengl logo.png' %}" alt="opengl">
+                        <span>OpenGl</span>
+                    </div>
+
+                    <div class="tool-card" data-tooltip="A web graphics API that enables interactive 3D graphics directly in a browser.">
+                        <img src="{% static 'images/WebGL logo.png' %}" alt="WebGL">
+                        <span>WebGL</span>
+                    </div>
+
+                    <div class="tool-card" data-tooltip="A JavaScript library that simplifies creating and displaying 3D graphics on the web.">
+                        <img src="{% static 'images/Three.js logo.png' %}" alt="Three.js">
+                        <span>Three.js</span>
+                    </div>
+
+                    <div class="tool-card" data-tooltip="An open-source machine learning framework used to build, train, and deploy artificial intelligence models.">
+                        <img src="{% static 'images/Tensorflow logo.png' %}" alt="Tensorflow">
+                        <span>Tensorflow</span>
+                    </div>
+
+                    <div class="tool-card" data-tooltip="An open-source deep learning framework known for its flexibility and ease of use in AI and machine learning projects.">
+                        <img src="{% static 'images/pytorch logo.png' %}" alt="pytorch">
+                        <span>PyTorch</span>
+                    </div>
+
+                    <div class="tool-card" data-tooltip="A cybersecurity framework used to understand, classify, and map real-world attacker tactics, techniques, and procedures.">
+                        <img src="{% static 'images/MITRE ATT&CK logo.png' %}" alt="MITRE ATT&CK">
+                        <span>MITRE ATT&CK</span>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- HOBBIES SECTION: personal interests with animated years counters -->
+    <section class="page-layer hobbies-layer reveal-section" id="hobbies">
+        <div class="layer-inner">
+
+            <span class="layer-kicker">Beyond Work</span>
+            <div class="info-section-title">
+                <h2 class="layer-title text-reveal">
+                    <span class="title-bracket">&lt;</span>
+                    Hobbies
+                    <span class="title-bracket">&gt;</span>
+                </h2>
+            </div>
+
+            <div class="hobby-list">
+
+                <div class="hobby-item">
+                    <div class="hobby-name">Gaming & Esports</div>
+
+                    <div class="hobby-icon">
+                        <i class="fa-solid fa-gamepad"></i>
+                    </div>
+
+                    <div class="hobby-years">
+                        <span class="years-number counter" data-target="20">0</span>
+                        <span class="years-label">Years</span>
+                    </div>
+                </div>
+
+                <div class="hobby-item">
+                    <div class="hobby-name">Boxing & Swimming</div>
+
+                    <div class="hobby-icon">
+                        <i class="fa-solid fa-dumbbell"></i>
+                    </div>
+
+                    <div class="hobby-years">
+                        <span class="years-number counter" data-target="10">0</span>
+                        <span class="years-label">Years</span>
+                    </div>
+                </div>
+
+                <div class="hobby-item">
+                    <div class="hobby-name">Modelling & Illustrating</div>
+
+                    <div class="hobby-icon">
+                        <i class="fa-solid fa-palette"></i>
+                    </div>
+
+                    <div class="hobby-years">
+                        <span class="years-number counter" data-target="3">0</span>
+                        <span class="years-label">Years</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- Project fullscreen image lightbox -->
+    <div class="project-lightbox" id="project-lightbox">
+        <button class="lightbox-close">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <button class="lightbox-arrow lightbox-prev">
+            <i class="fa-solid fa-chevron-left"></i>
+        </button>
+
+        <img class="lightbox-image" src="" alt="Project preview">
+
+        <button class="lightbox-arrow lightbox-next">
+            <i class="fa-solid fa-chevron-right"></i>
+        </button>
+    </div>
+
+    
+    <!-- Floating tooltip used by toolkit icons -->
+    <div class="tool-tooltip" id="tool-tooltip"></div>
+
+
+    <!-- Contact popup opened from navbar button -->
+    <div class="contact-popup-overlay" id="contact-popup">
+        <div class="contact-popup-box">
+
+            <button type="button" class="contact-popup-close" id="close-contact-popup">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <span class="contact-kicker">Let’s Connect</span>
+            <h2>Contact Me</h2>
+
+            <div class="contact-popup-list">
+
+                <div class="contact-popup-item">
+                    <a href="mailto:ps24@hotmail.fr" target="_blank" rel="noopener noreferrer">
+                        <i class="fa-solid fa-envelope"></i>
+                        <span>ps24@hotmail.fr</span>
+                    </a>
+
+                    <button class="copy-contact-btn" data-copy="ps24@hotmail.fr">
+                        <i class="fa-regular fa-copy"></i>
+                    </button>
+                </div>
+
+                <div class="contact-popup-item">
+                    <a href="tel:+966537138556" target="_blank" rel="noopener noreferrer">
+                        <i class="fa-solid fa-phone"></i>
+                        <span>+966 53 713 8556</span>
+                    </a>
+
+                    <button class="copy-contact-btn" data-copy="+966 53 713 8556">
+                        <i class="fa-regular fa-copy"></i>
+                    </button>
+                </div>
+
+                <div class="contact-popup-item">
+                    <a href="https://www.linkedin.com/in/ibrahim-simonnin/" target="_blank" rel="noopener noreferrer">
+                        <i class="fa-brands fa-linkedin-in"></i>
+                        <span>www.linkedin.com/in/ibrahim-simonnin</span>
+                    </a>
+
+                    <button class="copy-contact-btn" data-copy="https://www.linkedin.com/in/ibrahim-simonnin/">
+                        <i class="fa-regular fa-copy"></i>
+                    </button>
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- Simple certificate viewer for section-specific certificate buttons -->
+    <div class="certificate-popup" id="certificate-popup">
+
+        <button class="certificate-close" type="button">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <button class="certificate-arrow certificate-prev" type="button">
+            <i class="fa-solid fa-chevron-left"></i>
+        </button>
+
+        <img id="certificate-image" src="" alt="Certificate">
+
+        <div class="certificate-counter" id="certificate-counter">
+            <span id="certificate-current">1</span>
+            <span>/</span>
+            <span id="certificate-total">1</span>
+        </div>
+
+        <button class="certificate-arrow certificate-next" type="button">
+            <i class="fa-solid fa-chevron-right"></i>
+        </button>
+
+    </div>
+
+
+    <!-- Certificate archive explorer window -->
+    <div class="certificate-explorer-overlay" id="certificate-explorer">
+
+        <div class="certificate-explorer-window">
+
+            <div class="certificate-explorer-topbar">
+                <div>
+                    <span class="window-dot"></span>
+                    <span class="window-dot"></span>
+                    <span class="window-dot"></span>
+                </div>
+
+                <span>Certificates Archive</span>
+
+                <button id="close-certificate-folder">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div class="certificate-grid">
+
+                <div class="certificate-file" data-full="{% static 'certificates/sharaf 3_page-0001.jpg' %}">
+                    <img src="{% static 'certificates/sharaf 3_page-0001.jpg' %}" alt="">
+                    <span>3rd Honor Certificate</span>
+                </div>
+
+                <div class="certificate-file" data-full="{% static 'certificates/Data Science Methodology Certificate.png' %}">
+                    <img src="{% static 'certificates/Data Science Methodology Certificate.png' %}" alt="">
+                    <span>Data Science Methodology Certificate</span>
+                </div>
+
+                <div class="certificate-file" data-full="{% static 'certificates/Data Analysis with Python Certificate.png' %}">
+                    <img src="{% static 'certificates/Data Analysis with Python Certificate.png' %}" alt="">
+                    <span>Data Analysis with Python Certificate</span>
+                </div>
+
+                <div class="certificate-file" data-full="{% static 'certificates/French Delf A2 certificate.png' %}">
+                    <img src="{% static 'certificates/French Delf A2 certificate.png' %}" alt="">
+                    <span>French Delf A2 Certificate</span>
+                </div>
+
+                <div class="certificate-file" data-full="{% static 'certificates/French Delf B2 certificate.png' %}">
+                    <img src="{% static 'certificates/French Delf B2 certificate.png' %}" alt="">
+                    <span>French Delf B2 Certificate</span>
+                </div>
+
+                <div class="certificate-file" data-full="{% static 'certificates/alfozan academy_page-0001.jpg' %}">
+                    <img src="{% static 'certificates/alfozan academy_page-0001.jpg' %}" alt="">
+                    <span>Alfozan Academy Certificate</span>
+                </div>
+
+                <div class="certificate-file" data-full="{% static 'certificates/Rajhi Dawra certificate.png' %}">
+                    <img src="{% static 'certificates/Rajhi Dawra certificate.png' %}" alt="">
+                    <span>Rajhi Program Certificate</span>
+                </div>
+
+                <div class="certificate-file" data-full="{% static 'certificates/UnityEssentials_Badge20260529-32-mulwbm_page-0001.jpg' %}">
+                    <img src="{% static 'certificates/UnityEssentials_Badge20260529-32-mulwbm_page-0001.jpg' %}" alt="">
+                    <span>Unity Essentials Badge</span>
+                </div>
+
+                <div class="certificate-file" data-full="{% static 'certificates/Unity Junior Programmer Badge.png' %}">
+                    <img src="{% static 'certificates/Unity Junior Programmer Badge.png' %}" alt="">
+                    <span>Unity Junior Programmer Badge</span>
+                </div>
+
+                <div class="certificate-file" data-full="{% static 'certificates/Unity Creative Core Badge.png' %}">
+                    <img src="{% static 'certificates/Unity Creative Core Badge.png' %}" alt="">
+                    <span>Unity Creative Core Badge</span>
+                </div>
+
+                <div class="certificate-file" data-full="{% static 'certificates/ibrahim-simonnin-canva-essentials-certificate_page-0001.jpg' %}">
+                    <img src="{% static 'certificates/ibrahim-simonnin-canva-essentials-certificate_page-0001.jpg' %}" alt="">
+                    <span>Canva Essentials Certificate</span>
+                </div>
+
+                <div class="certificate-file" data-full="{% static 'certificates/canva visual suit certificate.png' %}">
+                    <img src="{% static 'certificates/canva visual suit certificate.png' %}" alt="">
+                    <span>Canva's Visual Suite Certificate</span>
+                </div>
+
+                <div class="certificate-file" data-full="{% static 'certificates/3D Printing_page-0001.jpg' %}">
+                    <img src="{% static 'certificates/3D Printing_page-0001.jpg' %}" alt="">
+                    <span>3D Printing</span>
+                </div>
+
+                <div class="certificate-file" data-full="{% static 'certificates/Design Thinking_page-0001.jpg' %}">
+                    <img src="{% static 'certificates/Design Thinking_page-0001.jpg' %}" alt="">
+                    <span>Design Thinking</span>
+                </div>
+
+                <div class="certificate-file" data-full="{% static 'certificates/Coursera Business Analysis & Process Management_page-0001.jpg' %}">
+                    <img src="{% static 'certificates/Coursera Business Analysis & Process Management_page-0001.jpg' %}" alt="">
+                    <span>Coursera Business Analysis & Process Management</span>
+                </div>
+
+                <div class="certificate-file" data-full="{% static 'certificates/Coursera Build a free website with WordPress_page-0001.jpg' %}">
+                    <img src="{% static 'certificates/Coursera Build a free website with WordPress_page-0001.jpg' %}" alt="">
+                    <span>Coursera Build a free website with WordPress</span>
+                </div>
+
+                <div class="certificate-file" data-full="{% static 'certificates/Coursera Getting Started in Google Analytics_page-0001.jpg' %}">
+                    <img src="{% static 'certificates/Coursera Getting Started in Google Analytics_page-0001.jpg' %}" alt="">
+                    <span>Coursera Getting Started in Google Analytics</span>
+                </div>
+
+                <div class="certificate-file" data-full="{% static 'certificates/Coursera Finding, Sorting, & Filtering Data in Microsoft_page-0001.jpg' %}">
+                    <img src="{% static 'certificates/Coursera Finding, Sorting, & Filtering Data in Microsoft_page-0001.jpg' %}" alt="">
+                    <span>Coursera Finding, Sorting, & Filtering Data in Microsoft</span>
+                </div>
+
+                <div class="certificate-file" data-full="{% static 'certificates/Coursera Machine Learning Pipelines with Azure ML Studio_page-0001.jpg' %}">
+                    <img src="{% static 'certificates/Coursera Machine Learning Pipelines with Azure ML Studio_page-0001.jpg' %}" alt="">
+                    <span>Coursera Machine Learning Pipelines with Azure ML Studio</span>
+                </div>
+
+                <div class="certificate-file" data-full="{% static 'certificates/Coursera Visualizing Filters of a CNN using TensorFlow_page-0001.jpg' %}">
+                    <img src="{% static 'certificates/Coursera Visualizing Filters of a CNN using TensorFlow_page-0001.jpg' %}" alt="">
+                    <span>Coursera Visualizing Filters of a CNN using TensorFlow</span>
+                </div>
+
+                <div class="certificate-file" data-full="{% static 'certificates/Coursera Deep Learning with PyTorch - Object Localization_page-0001.jpg' %}">
+                    <img src="{% static 'certificates/Coursera Deep Learning with PyTorch - Object Localization_page-0001.jpg' %}" alt="">
+                    <span>Coursera Deep Learning with PyTorch - Object Localization</span>
+                </div>
+
+                <div class="certificate-file" data-full="{% static 'certificates/Coursera Object Localization with TensorFlow_page-0001.jpg' %}">
+                    <img src="{% static 'certificates/Coursera Object Localization with TensorFlow_page-0001.jpg' %}" alt="">
+                    <span>Coursera Object Localization with TensorFlow</span>
+                </div>
+
+                <div class="certificate-file" data-full="{% static 'certificates/Coursera Tweet Emotion Recognition with TensorFlow_page-0001.jpg' %}">
+                    <img src="{% static 'certificates/Coursera Tweet Emotion Recognition with TensorFlow_page-0001.jpg' %}" alt="">
+                    <span>Coursera Tweet Emotion Recognition with TensorFlow</span>
+                </div>
+
+                <div class="certificate-file" data-full="{% static 'certificates/Coursera Build a computer vision app with Azure Cognitive_page-0001.jpg' %}">
+                    <img src="{% static 'certificates/Coursera Build a computer vision app with Azure Cognitive_page-0001.jpg' %}" alt="">
+                    <span>Coursera Build a computer vision app with Azure Cognitive</span>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <!-- Fullscreen certificate preview opened from the archive explorer -->
+    <div class="certificate-viewer-overlay" id="certificate-viewer">
+
+        <button class="certificate-viewer-close" id="close-certificate-viewer">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <button class="certificate-viewer-arrow" id="certificate-prev">
+            <i class="fa-solid fa-chevron-left"></i>
+        </button>
+
+        <img id="certificate-viewer-image" src="" alt="Certificate preview">
+
+        <button class="certificate-viewer-arrow" id="certificate-next">
+            <i class="fa-solid fa-chevron-right"></i>
+        </button>
+
+    </div>
+
+
+    <!-- Pass Django static image path to external Three.js coin script -->
+    <script>
+        window.KFUPM_LOGO_URL = "{% static 'images/KFUPM logo.png' %}";
+    </script>
+
+
+    <!-- Footer component -->
+    {% include "components/footer.html" %}
+
+    <!-- JavaScript files loaded at the end so all HTML elements exist first -->
+    <script src="{% static 'js/loader.js' %}"></script>
+    <script src="{% static 'js/hero.js' %}"></script>
+    <script src="{% static 'js/animations.js' %}"></script>
+    <script src="{% static 'js/experience.js' %}"></script>
+    <script src="{% static 'js/projects.js' %}"></script>
+    <script src="{% static 'js/toolkit.js' %}"></script>
+    <script src="{% static 'js/contact.js' %}"></script>
+    <script src="{% static 'js/certificates.js' %}"></script>
+    <script src="{% static 'js/kfupm-coin.js' %}"></script>
+    
+
+</body>
+</html>
