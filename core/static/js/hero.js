@@ -53,6 +53,14 @@
                 item.classList.add("visible");
             }, index * 180);
         });
+
+        const cvBtn = document.querySelector(".hero-cv-btn");
+
+        if(cvBtn){
+            setTimeout(() => {
+                cvBtn.classList.add("visible");
+            }, quickInfoItems.length * 180);
+        }
     }
 
 /* Starts the hero animation after the page and loading screen finish */

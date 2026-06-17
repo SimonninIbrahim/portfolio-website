@@ -45,4 +45,35 @@
             });
         }
     });
+
+
+    const openCvPopup = document.getElementById("open-cv-popup");
+    const closeCvPopup = document.getElementById("close-cv-popup");
+    const cvPopup = document.getElementById("cv-popup");
+
+    if(openCvPopup && closeCvPopup && cvPopup){
+        openCvPopup.addEventListener("click", () => {
+            cvPopup.classList.add("active");
+            document.body.style.overflow = "hidden";
+        });
+
+        closeCvPopup.addEventListener("click", () => {
+            cvPopup.classList.remove("active");
+            document.body.style.overflow = "";
+        });
+
+        cvPopup.addEventListener("click", (e) => {
+            if(e.target === cvPopup){
+                cvPopup.classList.remove("active");
+                document.body.style.overflow = "";
+            }
+        });
+
+        window.addEventListener("keydown", (e) => {
+            if(e.key === "Escape"){
+                cvPopup.classList.remove("active");
+                document.body.style.overflow = "";
+            }
+        });
+    }
   

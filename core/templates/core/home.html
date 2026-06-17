@@ -157,7 +157,13 @@
                     <strong>French</strong>
                 </div>
 
+                <button class="hero-cv-btn" id="open-cv-popup" type="button">
+                    <i class="fa-solid fa-file-arrow-down"></i>
+                    View CV
+                </button>
+
             </div>
+
         </div>
 
         <div class="hero-right">
@@ -2049,6 +2055,27 @@
             <i class="fa-solid fa-chevron-right"></i>
         </button>
 
+    </div>
+
+    <div class="cv-popup-overlay" id="cv-popup">
+        <div class="cv-popup-box">
+
+            <button class="cv-popup-close" id="close-cv-popup" type="button">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <h2>Ibrahim Simonnin CV 2026</h2>
+
+            <iframe src="{% static 'files/Ibrahim Simonnin CV 2026.pdf' %}" class="cv-frame"></iframe>
+
+            <a class="cv-download-btn"
+            href="{% static 'files/Ibrahim Simonnin CV 2026.pdf' %}"
+            download="Ibrahim Simonnin CV 2026.pdf">
+                <i class="fa-solid fa-download"></i>
+                Download CV
+            </a>
+
+        </div>
     </div>
 
 
