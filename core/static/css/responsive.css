@@ -810,3 +810,55 @@
         height:auto !important;
     }
 }
+
+/* ===============================
+   PHONE FULLSCREEN VIEWER ARROWS
+   Places project and certificate arrows below the image instead
+   of covering it on small screens.
+================================ */
+@media(max-width:520px){
+
+    /* Project lightbox */
+    .lightbox-arrow{
+        top:auto;
+        bottom:250px;
+        transform:none;
+    }
+
+    .lightbox-prev{
+        left:calc(50% - 152px);
+    }
+
+    .lightbox-next{
+        right:calc(50% - 152px);
+    }
+
+    .lightbox-image{
+        max-width:88vw;
+        max-height:70vh;
+    }
+
+    /* Certificate viewer */
+    .certificate-arrow,
+    .certificate-viewer-arrow{
+        top:auto;
+        bottom:250px;
+        transform:none;
+    }
+
+    .certificate-prev,
+    #certificate-prev{
+        left:calc(50% - 152px);
+    }
+
+    .certificate-next,
+    #certificate-next{
+        right:calc(50% - 152px);
+    }
+
+    #certificate-image,
+    #certificate-viewer-image{
+        max-width:88vw;
+        max-height:70vh;
+    }
+}

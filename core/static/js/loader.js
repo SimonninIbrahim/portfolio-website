@@ -1,13 +1,18 @@
 /* ===============================
-   LOADING SCREEN CONTROLLER
+   LOADING SCREEN + WELCOME GATE
 ================================ */
 
 document.addEventListener("DOMContentLoaded", () => {
-    setTimeout(() => {
-        const loadingScreen = document.getElementById("loading-screen");
+    const loadingScreen = document.getElementById("loading-screen");
+    const welcomeGate = document.getElementById("welcome-gate");
 
+    setTimeout(() => {
         if(loadingScreen){
             loadingScreen.classList.add("hidden");
         }
-    }, 1200);
+
+        if(welcomeGate){
+            welcomeGate.classList.add("active");
+        }
+    }, 1000);
 });

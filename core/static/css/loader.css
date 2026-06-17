@@ -97,3 +97,119 @@
         box-shadow:none;
     }
 }
+
+/* ===============================
+   WELCOME GATE
+   Appears after the loader and waits for the visitor to start
+   the portfolio experience manually.
+================================ */
+
+.welcome-gate{
+    position:fixed;
+    inset:0;
+    z-index:99998;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:
+        radial-gradient(circle at 30% 20%, rgba(255,106,43,0.20), transparent 38%),
+        rgba(14,14,16,0.96);
+
+    backdrop-filter:blur(14px);
+
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+
+    transition:0.6s ease;
+}
+
+.welcome-gate.active{
+    opacity:1;
+    visibility:visible;
+    pointer-events:auto;
+}
+
+.welcome-gate.hidden{
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+}
+
+.welcome-box{
+    width:min(520px, 88vw);
+    padding:42px 38px;
+    border-radius:32px;
+
+    background:
+        linear-gradient(145deg, rgba(255,106,43,0.13), rgba(255,255,255,0.035)),
+        #18181B;
+
+    border:1px solid rgba(255,255,255,0.09);
+
+    box-shadow:
+        0 35px 100px rgba(0,0,0,0.68),
+        0 0 50px rgba(255,106,43,0.18);
+
+    text-align:center;
+
+    transform:translateY(28px) scale(0.96);
+    transition:0.6s ease;
+}
+
+.welcome-gate.active .welcome-box{
+    transform:translateY(0) scale(1);
+}
+
+.welcome-kicker{
+    color:#FF6A2B;
+    font-family:'Plus Jakarta Sans', sans-serif;
+    font-size:12px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+}
+
+.welcome-box h1{
+    margin:12px 0 18px;
+    font-family:'Playfair Display', serif;
+    font-size:42px;
+    color:#F5F5F7;
+}
+
+.welcome-box p{
+    color:#B8B8BE;
+    font-family:'Plus Jakarta Sans', sans-serif;
+    font-size:14px;
+    line-height:1.8;
+    margin-bottom:28px;
+}
+
+#enter-portfolio-btn{
+    border:none;
+    border-radius:999px;
+    padding:14px 24px;
+
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+
+    background:linear-gradient(135deg,#FF7A18,#FF4D00);
+    color:#0E0E10;
+
+    font-family:'Plus Jakarta Sans', sans-serif;
+    font-weight:800;
+    letter-spacing:1px;
+    text-transform:uppercase;
+
+    cursor:pointer;
+
+    box-shadow:0 18px 45px rgba(255,77,0,0.35);
+    transition:0.3s;
+}
+
+#enter-portfolio-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 26px 65px rgba(255,77,0,0.50);
+}
